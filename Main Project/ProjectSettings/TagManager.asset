@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TowerLayer
+    uniqueID: 1156259969
+    locked: 0
+  - name: MouseLayer
+    uniqueID: 3482262687
+    locked: 0
