@@ -35,6 +35,7 @@ public class TowerTestControl : MonoBehaviour
             }
         }
         else {
+            
             transform.position = mousePositionInWorld;
             if(Input.GetMouseButtonDown(0)) {
                 selected = false;
