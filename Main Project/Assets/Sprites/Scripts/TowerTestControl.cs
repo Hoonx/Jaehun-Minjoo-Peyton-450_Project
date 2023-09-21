@@ -14,7 +14,7 @@ public class TowerTestControl : MonoBehaviour
     public Collider2D platformCollider;
     bool onPlatform = false;
     public PlatformController platform;
-    bool filled;
+    //bool filled;
     void Start()
     {
         
@@ -25,11 +25,11 @@ public class TowerTestControl : MonoBehaviour
     }
    
 
-
+    //Note: Code Commented out does not currently function
     // Update is called once per frame
     void Update()
     {
-        filled = platform.filled;
+        //filled = platform.filled;
         //getting mouse input, will be changed to follow mouseController
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -46,7 +46,7 @@ public class TowerTestControl : MonoBehaviour
             
             transform.position = mousePositionInWorld;
             transform.position += new Vector3(0, -0.4f, 0);
-            if (thisCollider.IsTouching(platformCollider) && !filled)
+            if (thisCollider.IsTouching(platformCollider) /*&& !filled*/)
             {
                 sprite.color = new Color(0, 1, 0, .75f);
                 onPlatform = true;
@@ -56,7 +56,7 @@ public class TowerTestControl : MonoBehaviour
                 onPlatform = false;
             }
 
-            if (Input.GetMouseButtonDown(0) && onPlatform && !filled) {
+            if (Input.GetMouseButtonDown(0) && onPlatform /*&& !filled*/) {
                 transform.position = GameObject.Find("Platform").transform.position;
                 transform.position += new Vector3(0, 0.5f, 0);
                 selected = false;

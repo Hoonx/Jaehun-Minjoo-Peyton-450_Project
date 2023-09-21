@@ -11,18 +11,18 @@ public class PlatformController : MonoBehaviour
     public Collider2D towerCollider;
     void Start()
     {
-        
+        filled = false;
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (thisCollider.IsTouching(towerCollider) && tower.selected == false)
+       /* if (thisCollider.IsTouching(towerCollider) && tower.selected == false)
         {
             filled = true;
         }
         else {
             filled = false;
-        }
+        } */
     }
 }
