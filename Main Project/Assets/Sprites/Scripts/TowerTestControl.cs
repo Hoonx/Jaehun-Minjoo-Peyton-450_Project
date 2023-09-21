@@ -13,7 +13,8 @@ public class TowerTestControl : MonoBehaviour
     Color originalColor;
     public Collider2D platformCollider;
     bool onPlatform = false;
-    
+    public PlatformController platform;
+    bool filled;
     void Start()
     {
         
@@ -28,10 +29,12 @@ public class TowerTestControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        filled = platform.filled;
+        //getting mouse input, will be changed to follow mouseController
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
+        //Figuring out if a Unit has been selected and if it can be placed, will be changed to be universal among all platforms
         if (!selected) {
 
             if (Input.GetMouseButtonDown(0) && thisCollider.IsTouching(mouseCollider)){
@@ -43,7 +46,7 @@ public class TowerTestControl : MonoBehaviour
             
             transform.position = mousePositionInWorld;
             transform.position += new Vector3(0, -0.4f, 0);
-            if (thisCollider.IsTouching(platformCollider))
+            if (thisCollider.IsTouching(platformCollider) && !filled)
             {
                 sprite.color = new Color(0, 1, 0, .75f);
                 onPlatform = true;
@@ -53,7 +56,7 @@ public class TowerTestControl : MonoBehaviour
                 onPlatform = false;
             }
 
-            if (Input.GetMouseButtonDown(0) && onPlatform) {
+            if (Input.GetMouseButtonDown(0) && onPlatform && !filled) {
                 transform.position = GameObject.Find("Platform").transform.position;
                 transform.position += new Vector3(0, 0.5f, 0);
                 selected = false;
