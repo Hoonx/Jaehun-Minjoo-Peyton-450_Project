@@ -281,6 +281,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2942a8185be71f42bd0b11cde1b8788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerCollider: {fileID: 999441016}
+  staticSprite: {fileID: -1108026646, guid: 073e4aaa31dcdf6499e28759b95afcaa, type: 3}
+  holdSprite: {fileID: 1166408510, guid: 073e4aaa31dcdf6499e28759b95afcaa, type: 3}
+  grabSprite: {fileID: 1986039471, guid: 073e4aaa31dcdf6499e28759b95afcaa, type: 3}
+  tower: {fileID: 999441014}
 --- !u!50 &770184939
 Rigidbody2D:
   serializedVersion: 4
@@ -509,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757aef307b702ce45b600cc28cde2047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
   mouseCollider: {fileID: 770184940}
   platformCollider: {fileID: 1252837482}
 --- !u!50 &999441015

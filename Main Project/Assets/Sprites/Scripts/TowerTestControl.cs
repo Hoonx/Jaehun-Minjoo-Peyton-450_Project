@@ -5,8 +5,9 @@ using UnityEngine;
 public class TowerTestControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool selected = false;
+    public bool selected = false;
     SpriteRenderer sprite;
+    
     Collider2D thisCollider;
     public Collider2D mouseCollider;
     Color originalColor;
@@ -15,6 +16,7 @@ public class TowerTestControl : MonoBehaviour
     
     void Start()
     {
+        
         sprite = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<Collider2D>();
         originalColor = sprite.color;
