@@ -10,12 +10,15 @@ public class TowerTestControl : MonoBehaviour
     Collider2D thisCollider;
     public Collider2D mouseCollider;
     Color originalColor;
-     
+    public Collider2D platformCollider;
+    bool onPlatform = false;
+    
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<Collider2D>();
         originalColor = sprite.color;
+        
     }
    
 
@@ -30,14 +33,27 @@ public class TowerTestControl : MonoBehaviour
         if (!selected) {
 
             if (Input.GetMouseButtonDown(0) && thisCollider.IsTouching(mouseCollider)){
-                sprite.color = new Color(1, 0, 0, 1);
+                sprite.color = new Color(1, 0, 0, .75f);
                 selected = true;
             }
         }
         else {
             
             transform.position = mousePositionInWorld;
-            if(Input.GetMouseButtonDown(0)) {
+            transform.position += new Vector3(0, -0.4f, 0);
+            if (thisCollider.IsTouching(platformCollider))
+            {
+                sprite.color = new Color(0, 1, 0, .75f);
+                onPlatform = true;
+            }
+            else {
+                sprite.color = new Color(1, 0, 0, .75f);
+                onPlatform = false;
+            }
+
+            if (Input.GetMouseButtonDown(0) && onPlatform) {
+                transform.position = GameObject.Find("Platform").transform.position;
+                transform.position += new Vector3(0, 0.5f, 0);
                 selected = false;
                 sprite.color = originalColor;
             }
