@@ -13,7 +13,7 @@ public class TowerTestControl : MonoBehaviour
     Color originalColor;
     public Collider2D platformCollider;
     bool onPlatform = false;
-    public PlatformController platform;
+    //public PlatformController platform;
     //bool filled;
     void Start()
     {
