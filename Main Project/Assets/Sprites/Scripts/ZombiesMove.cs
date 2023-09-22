@@ -4,18 +4,50 @@ using UnityEngine;
 
 public class ZombiesMove : MonoBehaviour
 {
-    Rigidbody2D _rb;
-    public float speed = 5.0f;
+    [Header("References")]
+    [SerializeField] private Rigidbody2D rb;
+
+    [Header("Attributes")]
+    [SerializeField] private float moveSpeed = 2f;
+
+    private Transform target;
+    private int pathIndex = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        target = LevelManager.main.path[pathIndex];
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        _rb.velocity = new Vector2(speed, _rb.velocity.y);
+        if (Vector2.Distance(target.position, transform.position) <= .1f)
+        {
+            pathIndex++;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(Vector2.Distance(target.position, transform.position) <= .1f)
+        {
+            pathIndex++;
+            target = LevelManager.main.path[pathIndex];
+        }
+
+        if (pathIndex == LevelManager.main.path.Length)
+        {
+            Destroy(gameObject);
+            return;
+
+        } else
+        {
+            target = LevelManager.main.path[pathIndex];
+        }
+        Vector2 direction = (   target.position - transform.position).normalized;
+
+        rb.velocity = direction * moveSpeed;        
     }
 }
