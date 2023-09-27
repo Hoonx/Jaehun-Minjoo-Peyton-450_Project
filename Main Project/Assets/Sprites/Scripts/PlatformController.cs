@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool filled;
+    //public bool filled;
     public TowerTestControl tower;
     Collider2D thisCollider;
     public Collider2D towerCollider;
+    public int orientation;
     void Start()
     {
-        filled = false;
+        //filled = false;
     }
     
     // Update is called once per frame

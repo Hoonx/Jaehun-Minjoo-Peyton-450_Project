@@ -72,7 +72,7 @@ public class TowerTestControl : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && onPlatform /*&& !filled*/)
             {
                 transform.position = platformPosition;
-                transform.position += new Vector3(0, 0.5f, 0);
+                transform.position += new Vector3(0, 0.4f, 0);
                 selected = false;
                 sprite.color = originalColor;
             }
