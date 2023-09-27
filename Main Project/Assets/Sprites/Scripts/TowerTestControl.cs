@@ -16,6 +16,11 @@ public class TowerTestControl : MonoBehaviour
     string platformName;
     Vector3 platformPosition;
     public MouseController mouse;
+    public Sprite forward;
+    public Sprite right;
+    public Sprite left;
+    public int facing;
+
     void Start()
     {
         
@@ -28,10 +33,18 @@ public class TowerTestControl : MonoBehaviour
     
 
     void OnCollisionStay2D(Collision2D other) {
-        platformName = other.gameObject.GetComponent<platformController>().name;
-        platformPosition = other.gameObject.GetComponent<platformController>().transform.position;
-        onPlatform = other.gameObject.GetComponent<platformController>();
+
+        if (other.gameObject.GetComponent<platformController>())
+        {
+            platformName = other.gameObject.GetComponent<platformController>().name;
+            platformPosition = other.gameObject.GetComponent<platformController>().transform.position;
+            facing = other.gameObject.GetComponent<platformController>().orientation;
+            onPlatform = other.gameObject.GetComponent<platformController>();
+        }
     }
+
+
+
     void OnCollisionExit2D(Collision2D other) {
         platformName = "";
         platformPosition = new Vector3(0, 0, 0);
@@ -51,6 +64,7 @@ public class TowerTestControl : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && thisCollider.IsTouching(mouseCollider) && mouse.isSelected == false){
                 sprite.color = new Color(1, 0, 0, .75f);
+                sprite.sprite = forward;
                 selected = true;
             }
         }
@@ -71,6 +85,19 @@ public class TowerTestControl : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0) && onPlatform /*&& !filled*/)
             {
+                if (facing > 1)
+                {
+                    sprite.sprite = left;
+                }
+                else if (facing < 1)
+                {
+                    sprite.sprite = right;
+                }
+                else {
+                    sprite.sprite = forward;
+                }
+                
+                
                 transform.position = platformPosition;
                 transform.position += new Vector3(0, 0.4f, 0);
                 selected = false;

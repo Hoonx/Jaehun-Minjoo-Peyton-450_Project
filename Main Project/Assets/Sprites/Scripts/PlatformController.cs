@@ -2,28 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformController : MonoBehaviour
+public class platformController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public bool filled;
-    public TowerTestControl tower;
-    Collider2D thisCollider;
-    public Collider2D towerCollider;
     public int orientation;
+    // Start is called before the first frame update
     void Start()
     {
-        //filled = false;
+        
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-       /* if (thisCollider.IsTouching(towerCollider) && tower.selected == false)
-        {
-            filled = true;
-        }
-        else {
-            filled = false;
-        } */
+        
     }
 }
