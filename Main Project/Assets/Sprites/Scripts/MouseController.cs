@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseController : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool isSelected;
+    public bool isSelected;
     Collider2D thisCollider;
     public Collider2D towerCollider;
     SpriteRenderer currentSprite;
@@ -24,18 +24,22 @@ public class MouseController : MonoBehaviour
 
     }
     // Update is called once per frame
+    void onCollisionEnter2D(Collision2D other) { 
+
+    }
+
     void Update()
     {
-        selected = tower.selected;
+        isSelected = tower.selected;
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
         transform.position = mousePositionInWorld;
-        if (thisCollider.IsTouching(towerCollider) && !selected)
+        if (thisCollider.IsTouching(towerCollider) && !isSelected)
         {
             currentSprite.sprite = holdSprite;
         }
-        else if (thisCollider.IsTouching(towerCollider) && selected) {
+        else if (thisCollider.IsTouching(towerCollider) && isSelected) {
             currentSprite.sprite = grabSprite;
         }
         else
