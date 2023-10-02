@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
-
-    [Header("Attributes")]
-    [SerializeField] private float movementSpeed = 2f;
+    public Rigidbody2D _rb;
+    public float moveSpeed = 5f;
 
     private Transform target;
     private int pathIndex = 0;
@@ -16,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = LevelManager.main.path[pathIndex];
+        target = LevelControl.main.path[pathIndex];
     }
 
     // Update is called once per frame
@@ -25,18 +22,19 @@ public class EnemyMovement : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) <= 0.1f) {
             pathIndex++;
 
-            if (pathIndex == LevelManager.main.path.Length) {
+            if (pathIndex >= LevelControl.main.path.Length) {
                 Destroy(gameObject);
                 return;
             }
             else {
-                target = LevelManager.main.path[pathIndex];
+                target = LevelControl.main.path[pathIndex];
             }
         }
     }
 
-    private void FixedUpdate() {
+    void FixedUpdate() {
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.velocity = direction * movementSpeed;
+
+        _rb.velocity = direction * moveSpeed;
     }
 }

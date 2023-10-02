@@ -34,12 +34,12 @@ public class TowerTestControl : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other) {
 
-        if (other.gameObject.GetComponent<platformController>())
+        if (other.gameObject.GetComponent<PlatformController>())
         {
-            platformName = other.gameObject.GetComponent<platformController>().name;
-            platformPosition = other.gameObject.GetComponent<platformController>().transform.position;
-            facing = other.gameObject.GetComponent<platformController>().orientation;
-            onPlatform = other.gameObject.GetComponent<platformController>();
+            platformName = other.gameObject.GetComponent<PlatformController>().name;
+            platformPosition = other.gameObject.GetComponent<PlatformController>().transform.position;
+            facing = other.gameObject.GetComponent<PlatformController>().orientation;
+            onPlatform = other.gameObject.GetComponent<PlatformController>();
         }
     }
 
@@ -104,7 +104,7 @@ public class TowerTestControl : MonoBehaviour
                 sprite.color = originalColor;
             }
             else {
-                selected = true;
+                selected = true; 
             }
         }
             

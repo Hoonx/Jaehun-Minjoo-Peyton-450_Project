@@ -645,6 +645,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7184838846959765799, guid: 08458b4ac70684ad59a99b603545bed6, type: 3}
   m_PrefabInstance: {fileID: 541506880}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &104721467 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6251584111174910859, guid: cc26969bd53f044d0be9c633afb8f7b8, type: 3}
+  m_PrefabInstance: {fileID: 9217884866662657469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &105617247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7184838846959765799, guid: 08458b4ac70684ad59a99b603545bed6, type: 3}
@@ -12222,7 +12227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4868987424039837193, guid: cc26969bd53f044d0be9c633afb8f7b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 6.86
       objectReference: {fileID: 0}
     - target: {fileID: 4868987424039837193, guid: cc26969bd53f044d0be9c633afb8f7b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12256,6 +12261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5673444008784617411, guid: cc26969bd53f044d0be9c633afb8f7b8, type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 104721467}
     - target: {fileID: 6728644059733091117, guid: cc26969bd53f044d0be9c633afb8f7b8, type: 3}
       propertyPath: m_Name
       value: Enemy
