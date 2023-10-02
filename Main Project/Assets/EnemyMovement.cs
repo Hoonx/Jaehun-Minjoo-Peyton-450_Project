@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) <= 0.1f) {
             pathIndex++;
 
-            if (pathIndex >= LevelManager.main.path.Length) {
+            if (pathIndex == LevelManager.main.path.Length) {
                 Destroy(gameObject);
                 return;
             }
@@ -37,7 +37,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate() {
         Vector2 direction = (target.position - transform.position).normalized;
-
         rb.velocity = direction * movementSpeed;
     }
 }
