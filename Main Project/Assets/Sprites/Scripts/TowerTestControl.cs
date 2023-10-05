@@ -20,35 +20,43 @@ public class TowerTestControl : MonoBehaviour
     public Sprite right;
     public Sprite left;
     public int facing;
-
     void Start()
     {
         
         sprite = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<Collider2D>();
         originalColor = sprite.color;
-       
-        
+
     }
     
 
     void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.GetComponent<TowerTestControl>())
+        {
+            onPlatform = false;
+        }
 
         if (other.gameObject.GetComponent<PlatformController>())
         {
             platformName = other.gameObject.GetComponent<PlatformController>().name;
             platformPosition = other.gameObject.GetComponent<PlatformController>().transform.position;
             facing = other.gameObject.GetComponent<PlatformController>().orientation;
-            onPlatform = other.gameObject.GetComponent<PlatformController>();
+            onPlatform = true;
         }
+        
     }
 
 
 
     void OnCollisionExit2D(Collision2D other) {
-        platformName = "";
-        platformPosition = new Vector3(0, 0, 0);
-        onPlatform = false;
+        if (other.gameObject.GetComponent<PlatformController>())
+        {
+            platformName = "";
+            platformPosition = new Vector3(0, 0, 0);
+            onPlatform = false;
+           
+
+        }
     }
     //Note: Code Commented out does not currently function
     // Update is called once per frame
@@ -62,10 +70,11 @@ public class TowerTestControl : MonoBehaviour
         //Figuring out if a Unit has been selected and if it can be placed, will be changed to be universal among all platforms
         if (!selected) {
 
-            if (Input.GetMouseButtonDown(0) && thisCollider.IsTouching(mouseCollider) && mouse.isSelected == false){
+            if (Input.GetMouseButtonDown(0) && thisCollider.IsTouching(mouseCollider) && mouse.holding == false){
                 sprite.color = new Color(1, 0, 0, .75f);
                 sprite.sprite = forward;
                 selected = true;
+                mouse.holding = true;
             }
         }
         else {
@@ -73,7 +82,7 @@ public class TowerTestControl : MonoBehaviour
             transform.position = mousePositionInWorld;
             transform.position += new Vector3(0, -0.4f, 0);
 
-            if (onPlatform /*&& !filled*/)
+            if (onPlatform)
             {
                 sprite.color = new Color(0, 1, 0, .75f);
 
@@ -83,7 +92,7 @@ public class TowerTestControl : MonoBehaviour
                 sprite.color = new Color(1, 0, 0, .75f);
 
             }
-            if (Input.GetMouseButtonDown(0) && onPlatform /*&& !filled*/)
+            if (Input.GetMouseButtonDown(0) && onPlatform)
             {
                 if (facing > 1)
                 {
@@ -96,8 +105,7 @@ public class TowerTestControl : MonoBehaviour
                 else {
                     sprite.sprite = forward;
                 }
-                
-                
+                mouse.holding = false;
                 transform.position = platformPosition;
                 transform.position += new Vector3(0, 0.4f, 0);
                 selected = false;

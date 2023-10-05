@@ -13,7 +13,7 @@ public class MouseController : MonoBehaviour
     public Sprite holdSprite;
     public Sprite grabSprite;
     public TowerTestControl tower;
-    bool selected;
+   public bool holding = false;
     void Start()
     {
         Cursor.visible = false;
@@ -24,22 +24,36 @@ public class MouseController : MonoBehaviour
 
     }
     // Update is called once per frame
-    void onCollisionEnter2D(Collision2D other) { 
+    void OnCollisionStay2D(Collision2D other) {
 
+        if (other.gameObject.GetComponent<TowerTestControl>())
+        {
+            if (holding)
+            {
+                currentSprite.sprite = grabSprite;
+            }
+            else
+            {
+                currentSprite.sprite = holdSprite;
+            }
+        }
+    }
+    void OnCollisionExit2D(Collision2D other) {
+        currentSprite.sprite = staticSprite;
     }
 
     void Update()
     {
-        isSelected = tower.selected;
+       // isSelected = tower.selected;
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
         transform.position = mousePositionInWorld;
-        if (thisCollider.IsTouching(towerCollider) && !isSelected)
+        /*if (thisCollider.IsTouching(towerCollider) )
         {
             currentSprite.sprite = holdSprite;
         }
-        else if (thisCollider.IsTouching(towerCollider) && isSelected) {
+        else if (thisCollider.IsTouching(towerCollider) && holding) {
             currentSprite.sprite = grabSprite;
         }
         else
@@ -47,7 +61,7 @@ public class MouseController : MonoBehaviour
 
             currentSprite.sprite = staticSprite;
         }
-
+        */
         
     }
     
