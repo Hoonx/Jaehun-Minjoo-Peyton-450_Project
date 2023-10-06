@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombiesMove : MonoBehaviour
+public class enemiesMove : MonoBehaviour
 {
     public Rigidbody2D _rb;
     public float moveSpeed = 5f;
@@ -27,7 +27,10 @@ public class ZombiesMove : MonoBehaviour
             pathIndex++;
             target = LevelManager.main.path[pathIndex];
             //Destroy(gameObject)
+            
         }
+
+        
     }
 
     void FixedUpdate()
