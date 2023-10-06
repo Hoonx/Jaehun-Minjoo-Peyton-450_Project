@@ -20,6 +20,7 @@ public class TowerTestControl : MonoBehaviour
     public Sprite right;
     public Sprite left;
     public int facing;
+    bool mouseTouch;
     void Start()
     {
         
@@ -31,6 +32,9 @@ public class TowerTestControl : MonoBehaviour
     
 
     void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.GetComponent<MouseController>()) {
+            mouseTouch = true;
+        }
         if (other.gameObject.GetComponent<TowerTestControl>())
         {
             onPlatform = false;
@@ -57,6 +61,9 @@ public class TowerTestControl : MonoBehaviour
            
 
         }
+        if (other.gameObject.GetComponent<MouseController>()) {
+            mouseTouch = false;
+        }
     }
     //Note: Code Commented out does not currently function
     // Update is called once per frame
@@ -70,7 +77,7 @@ public class TowerTestControl : MonoBehaviour
         //Figuring out if a Unit has been selected and if it can be placed, will be changed to be universal among all platforms
         if (!selected) {
 
-            if (Input.GetMouseButtonDown(0) && thisCollider.IsTouching(mouseCollider) && mouse.holding == false){
+            if (Input.GetMouseButtonDown(0) && mouseTouch && mouse.holding == false){
                 sprite.color = new Color(1, 0, 0, .75f);
                 sprite.sprite = forward;
                 selected = true;

@@ -6,20 +6,20 @@ public class MouseController : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool isSelected;
-    Collider2D thisCollider;
-    public Collider2D towerCollider;
+    
+    
     SpriteRenderer currentSprite;
     public Sprite staticSprite;
     public Sprite holdSprite;
     public Sprite grabSprite;
-    public TowerTestControl tower;
-   public bool holding = false;
+    
+    public bool holding = false;
     void Start()
     {
         Cursor.visible = false;
         currentSprite = GetComponent<SpriteRenderer>();
-        thisCollider = GetComponent<Collider2D>();
-        //towerCollider = GetComponent<TowerTestControl>(); 
+        
+        
         
 
     }
@@ -49,19 +49,7 @@ public class MouseController : MonoBehaviour
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
         transform.position = mousePositionInWorld;
-        /*if (thisCollider.IsTouching(towerCollider) )
-        {
-            currentSprite.sprite = holdSprite;
-        }
-        else if (thisCollider.IsTouching(towerCollider) && holding) {
-            currentSprite.sprite = grabSprite;
-        }
-        else
-        {
-
-            currentSprite.sprite = staticSprite;
-        }
-        */
+       
         
     }
     
