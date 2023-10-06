@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 674485989966177080}
   - component: {fileID: 7001494454522253831}
   - component: {fileID: 6242682756843079279}
+  - component: {fileID: 3274546600356712977}
   m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: 0
   mouseCollider: {fileID: 0}
-  mouse: {fileID: 0}
+  mouse: {fileID: 8695668311488977072, guid: 481d66f417ce0c348bad9c2c0f0295e4, type: 3}
   forward: {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
   right: {fileID: 459105713, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
   left: {fileID: 604415489, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
@@ -190,3 +191,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &3274546600356712977
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676084900246011227}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 832
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
