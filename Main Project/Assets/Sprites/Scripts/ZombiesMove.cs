@@ -6,6 +6,7 @@ public class ZombiesMove : MonoBehaviour
 {
     public Rigidbody2D _rb;
     public float moveSpeed = 5f;
+    
 
 
     private Transform target;
