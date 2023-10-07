@@ -9,51 +9,60 @@ public class Spawner : MonoBehaviour
     private int enemiesNum;
     private float spawnTime;
     private bool isSpawn = false;
-    private float timeBetweenEnemiesSpawn = 0.5f;
+    public float timeBetweenEnemiesSpawn = 0.5f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startWave();
-
+        StartWave();
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnTime += Time.deltaTime;
-        //spawnTime = 0f;
-
-        while (isSpawn == true && enemiesNum>0)
+        // Check if we should spawn
+        if (enemiesNum > 0)
         {
-            if (spawnTime >= 1f/ timeBetweenEnemiesSpawn)
+            if (Time.time >= spawnTime)
             {
                 Spawn();
                 enemiesNum--;
-                spawnTime = 0f;
+                spawnTime = Time.time + timeBetweenEnemiesSpawn;
             }
         }
-        isSpawn = false;
-        wave++;
+        else
+        {
+            // Start a new wave when all enemies are spawned
+            wave++;
+
+        }
     }
 
     private void Spawn()
     {
-        GameObject spawnedZombies = Zombie[0];
-        Instantiate(spawnedZombies, LevelManager.main.startPoint.position, Quaternion.identity);
-        
+        // Check if the Zombie array is not empty
+        if (Zombie.Length > 0)
+        {
+            GameObject spawnedZombies = Zombie[0];
+            Instantiate(spawnedZombies, LevelManager.main.startPoint.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("error");
+        }
     }
 
-    private int enemiesForWave(int wave)
+    private int EnemiesForWave(int wave)
     {
-        return wave * 5; // Adjust this formula as needed for your game
+        return wave * 5; 
     }
 
-    private void startWave()
+    private void StartWave()
     {
-        isSpawn = true;
-        enemiesNum = enemiesForWave(wave);
+        enemiesNum = EnemiesForWave(wave);
+        spawnTime = Time.time + timeBetweenEnemiesSpawn; // Start spawning immediately
+        //wave++;
     }
 
 

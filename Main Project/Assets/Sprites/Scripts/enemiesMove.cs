@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemiesMove : MonoBehaviour
+public class EnemiesMove : MonoBehaviour
 {
     public Rigidbody2D _rb;
     public float moveSpeed = 5f;
