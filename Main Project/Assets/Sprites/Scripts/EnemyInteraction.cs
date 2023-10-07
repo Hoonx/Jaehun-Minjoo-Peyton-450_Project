@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyInteraction : MonoBehaviour
 {
     // Enemy Health
-    private float health;
+    private float health = 1;
     // How Much Money the Enemy Drops
     private int reward;
     // How Much Damage the Enemy Does if it Reaches the End
-    private int damage;
+    private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
