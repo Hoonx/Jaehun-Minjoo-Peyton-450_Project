@@ -20,11 +20,14 @@ public class reaching_end : MonoBehaviour
     }
    
     void Update() {
-        if (health <= 0) {
+        if (health <= 0)
+        {
             // Reset Level
             Time.timeScale = 0;
             restartButton.SetActive(true);
-            
+
         }
+        Time.timeScale = 1;
+        
     }
 }
