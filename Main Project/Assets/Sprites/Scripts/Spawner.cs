@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] Zombie;
-    private int wave = 1;
+    public int wave = 1;
     private int enemiesNum;
     private float spawnTime;
     private bool isSpawn = false;
@@ -31,12 +31,12 @@ public class Spawner : MonoBehaviour
                 spawnTime = Time.time + timeBetweenEnemiesSpawn;
             }
         }
-        else
-        {
-            // Start a new wave when all enemies are spawned
-            wave++;
+        //else
+        //{
+        //    // Start a new wave when all enemies are spawned
+        //    wave++;
 
-        }
+        //}
     }
 
     private void Spawn()
@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour
         return wave * 5; 
     }
 
-    private void StartWave()
+    private void    StartWave()
     {
         enemiesNum = EnemiesForWave(wave);
         spawnTime = Time.time + timeBetweenEnemiesSpawn; // Start spawning immediately
