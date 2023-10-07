@@ -16,7 +16,7 @@ TagManager:
   - Units
   - mouse
   - button
-  - 
+  - Restart Button
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
     locked: 0
   - name: Units
     uniqueID: 1837429167
+    locked: 0
+  - name: Restart
+    uniqueID: 3837822053
     locked: 0
   - name: mouse
     uniqueID: 1766551543
