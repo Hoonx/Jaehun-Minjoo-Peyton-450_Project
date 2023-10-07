@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour
         return wave * 5; 
     }
 
-    private void    StartWave()
+    public void    StartWave()
     {
         enemiesNum = EnemiesForWave(wave);
         spawnTime = Time.time + timeBetweenEnemiesSpawn; // Start spawning immediately

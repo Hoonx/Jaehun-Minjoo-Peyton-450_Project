@@ -10,6 +10,7 @@ public class NewWave : MonoBehaviour
     {
         // Initialize the 'spawner' reference in Awake
         spawner = FindObjectOfType<Spawner>();
+
     }
 
     public void OnButtonPress()
@@ -18,6 +19,8 @@ public class NewWave : MonoBehaviour
         {
             Debug.LogError("success");
             spawner.wave++;
+            spawner.StartWave();
+            
         }
         else
         {
