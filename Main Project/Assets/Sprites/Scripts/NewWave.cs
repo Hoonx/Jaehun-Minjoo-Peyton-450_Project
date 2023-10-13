@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewWave : MonoBehaviour
 {
     public Spawner spawner;
+    public int totalWave = 5;
 
     private void Awake()
     {
@@ -18,8 +19,12 @@ public class NewWave : MonoBehaviour
         if (spawner != null)
         {
             Debug.LogError("success");
-            spawner.wave++;
-            spawner.StartWave();
+            if (totalWave >=0)
+            {
+                spawner.wave++;
+                spawner.StartWave();
+                totalWave--;
+            }
             
         }
         else
