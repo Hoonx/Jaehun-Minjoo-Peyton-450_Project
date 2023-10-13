@@ -11,11 +11,10 @@ public class BuyButton : MonoBehaviour
     public GameObject unit;
     public Text moneyText;
 
-    //public void Start()
-    //{
-    //    money = 500;
-    //    UpdateMoneyDisplay();
-    //}
+    public void Start()
+    {
+        UpdateMoneyDisplay();
+    }
     public void OnButtonPress() {
         if (money >= 200) {
             money -= 200;
