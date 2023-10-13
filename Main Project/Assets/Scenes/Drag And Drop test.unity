@@ -1065,6 +1065,7 @@ GameObject:
   - component: {fileID: 275940554}
   - component: {fileID: 275940556}
   - component: {fileID: 275940555}
+  - component: {fileID: 275940557}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1188,6 +1189,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275940553}
   m_CullTransparentMesh: 1
+--- !u!114 &275940557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275940553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1b730b6531f4f47832a1a0aa58e906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  unit: {fileID: 0}
+  money: 0
 --- !u!4 &307711674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9155182530185328067, guid: 10ad6afa080e444789dd99f007bafa63, type: 3}
@@ -1876,6 +1892,7 @@ MonoBehaviour:
   money: 400
   unitsLeft: 2
   unit: {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
+  moneyText: {fileID: 0}
 --- !u!4 &421960249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9155182530185328067, guid: 10ad6afa080e444789dd99f007bafa63, type: 3}
@@ -2377,6 +2394,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1914198844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &606062900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606062901}
+  - component: {fileID: 606062904}
+  - component: {fileID: 606062903}
+  - component: {fileID: 606062902}
+  m_Layer: 5
+  m_Name: Money
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &606062901
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606062900}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 964157525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 354.86, y: 215.19}
+  m_SizeDelta: {x: 97.91, y: 25.63}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &606062902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606062900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acd49d72abc58640a777162c13827fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  unitsLeft: 0
+  unit: {fileID: 0}
+  moneyText: {fileID: 606062903}
+--- !u!114 &606062903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606062900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 16
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Money: '
+--- !u!222 &606062904
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606062900}
+  m_CullTransparentMesh: 1
 --- !u!1001 &624326694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3935,6 +4048,7 @@ RectTransform:
   - {fileID: 421553637}
   - {fileID: 1398009784}
   - {fileID: 2130927623}
+  - {fileID: 606062901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
