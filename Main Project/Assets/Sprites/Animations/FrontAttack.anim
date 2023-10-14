@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ZombieAttackFront
+  m_Name: FrontAttack
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -33,14 +33,14 @@ AnimationClip:
     - time: 0.8333333
       value: {fileID: 1859625777, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
     - time: 1
-      value: {fileID: 1859625777, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
+      value: {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
   m_SampleRate: 6
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
@@ -62,7 +62,7 @@ AnimationClip:
     - {fileID: -1119252609, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
     - {fileID: -1868633791, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
     - {fileID: 1859625777, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
-    - {fileID: 1859625777, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
+    - {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class tower_prototype : MonoBehaviour
+
 {
+    TowerTestControl tower;
+    public Animator attackAnim;
+
+    private void Start()
+    {
+        tower = GetComponent<TowerTestControl>();
+        attackAnim = GetComponent<Animator>();
+       
+
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "enemy") {
-            Debug.Log("Detected");
-            private float timer = 0f;
-            while (collision.gameObject.GetComponent<EnemyInteraction>().health > 0) {
-                Debug.Log("Damage Done");
+            if (tower.selected) { }
+            else
+            {
                 collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(5);
-                // WaitForSeconds(1);
+                attackAnim.SetBool("Trigger", true);
             }
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+        attackAnim.SetBool("Trigger", false);
     }
 }

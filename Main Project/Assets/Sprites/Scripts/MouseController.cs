@@ -5,10 +5,10 @@ using UnityEngine;
 public class MouseController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isSelected;
     
     
-    SpriteRenderer currentSprite;
+    
+    public SpriteRenderer currentSprite;
     public Sprite staticSprite;
     public Sprite holdSprite;
     public Sprite grabSprite;
@@ -44,7 +44,7 @@ public class MouseController : MonoBehaviour
 
     void Update()
     {
-       // isSelected = tower.selected;
+      
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;

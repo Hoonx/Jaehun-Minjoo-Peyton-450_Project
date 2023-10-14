@@ -21,16 +21,18 @@ public class TowerTestControl : MonoBehaviour
     public Sprite left;
     public int facing;
     bool mouseTouch;
+    
     void Start()
     {
         
         sprite = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<Collider2D>();
         originalColor = sprite.color;
+        
 
     }
-    
 
+    
     void OnCollisionStay2D(Collision2D other) {
         if (other.gameObject.GetComponent<MouseController>()) {
             mouseTouch = true;
@@ -47,7 +49,8 @@ public class TowerTestControl : MonoBehaviour
             facing = other.gameObject.GetComponent<PlatformController>().orientation;
             onPlatform = true;
         }
-        
+
+
     }
 
 
@@ -64,6 +67,7 @@ public class TowerTestControl : MonoBehaviour
         if (other.gameObject.GetComponent<MouseController>()) {
             mouseTouch = false;
         }
+
     }
     //Note: Code Commented out does not currently function
     // Update is called once per frame
