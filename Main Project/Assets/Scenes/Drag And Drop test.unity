@@ -1945,7 +1945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 400
   unit: {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
-  moneyText: {fileID: 0}
+  moneyText: {fileID: 606062903}
 --- !u!4 &421960249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9155182530185328067, guid: 10ad6afa080e444789dd99f007bafa63, type: 3}
@@ -2497,8 +2497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4acd49d72abc58640a777162c13827fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
-  unit: {fileID: 0}
+  money: 400
+  unit: {fileID: 1660199592}
   moneyText: {fileID: 606062903}
 --- !u!114 &606062903
 MonoBehaviour:
@@ -6848,6 +6848,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10ad6afa080e444789dd99f007bafa63, type: 3}
+--- !u!1 &1660199592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
+  m_PrefabInstance: {fileID: 104607778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1684692729
 GameObject:
   m_ObjectHideFlags: 0
