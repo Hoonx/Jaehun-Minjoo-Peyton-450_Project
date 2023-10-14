@@ -27,7 +27,9 @@ public class reaching_end : MonoBehaviour
             restartButton.SetActive(true);
 
         }
-        Time.timeScale = 1;
+        else {
+            Time.timeScale = 1;
+        }
         
     }
 }
