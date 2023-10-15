@@ -10,11 +10,14 @@ public class EnemyInteraction : MonoBehaviour
     private int reward;
     // How Much Damage the Enemy Does if it Reaches the End
     private int damage = 1;
+    public Spawner spawner;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // Call enemy Setup
+        
     }
 
     private void enemySetup()
@@ -33,6 +36,7 @@ public class EnemyInteraction : MonoBehaviour
     private void death() 
     {
         Destroy(transform.gameObject);
+        //spawner.enemiesLeft--;
     }
     // Update is called once per frame
     void Update()

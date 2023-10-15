@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 1841697504912084516}
   moveSpeed: 2
+  spawner: {fileID: 0}
 --- !u!212 &9191207471150022604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -177,6 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55333253b8d1d49bb898a4d30cf05790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 15
+  spawner: {fileID: 0}
 --- !u!114 &5832678966671051715
 MonoBehaviour:
   m_ObjectHideFlags: 0
