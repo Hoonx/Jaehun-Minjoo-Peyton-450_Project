@@ -25,9 +25,17 @@ public class EnemiesMove : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) <= .1f)
         {
             pathIndex++;
-            target = LevelManager.main.path[pathIndex];
-            //Destroy(gameObject)
-            
+            if (pathIndex == LevelManager.main.path.Length)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+
+                target = LevelManager.main.path[pathIndex];
+                //Destroy(gameObject)
+            }
         }
 
         

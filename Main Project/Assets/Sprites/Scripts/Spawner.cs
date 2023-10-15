@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     public float timeBetweenEnemiesSpawn = 0.5f;
 
 
+    public NewWave newWave;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,19 @@ public class Spawner : MonoBehaviour
         //else
         //{
         //    // Start a new wave when all enemies are spawned
+
         //    wave++;
+        //    newWave.totalWave--;
+        //    newWave.UpdateWaveDisplay();
+
+        //    float delay = 2.0f; // Adjust this value as needed
+        //    delay -= Time.deltaTime;
+
+        //    if (delay <= 0.0f)
+        //    {
+        //        StartWave();
+        //    }
+
 
         //}
     }
