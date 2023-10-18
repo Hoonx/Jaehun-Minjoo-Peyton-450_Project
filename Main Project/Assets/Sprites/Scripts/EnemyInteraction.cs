@@ -36,7 +36,7 @@ public class EnemyInteraction : MonoBehaviour
     private void death() 
     {
         Destroy(transform.gameObject);
-        //spawner.enemiesLeft--;
+        spawner.enemiesLeft--;
     }
     // Update is called once per frame
     void Update()

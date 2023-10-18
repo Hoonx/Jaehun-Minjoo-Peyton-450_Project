@@ -29,7 +29,7 @@ public class EnemiesMove : MonoBehaviour
             if (pathIndex == LevelManager.main.path.Length)
             {
                 Destroy(gameObject);
-                //spawner.enemiesLeft--;
+                spawner.enemiesLeft--;
                 return;
             }
             else

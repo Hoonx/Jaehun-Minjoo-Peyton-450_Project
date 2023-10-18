@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     private float spawnTime;
     private bool isSpawn = false;
     public float timeBetweenEnemiesSpawn = 0.5f;
-    //public int enemiesLeft;
+    public int enemiesLeft;
 
 
     public NewWave newWave;
@@ -34,26 +34,24 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        //if (enemiesLeft==0 && !isSpawn)
-        ////else
-        //{
-        //    // Start a new wave when all enemies are spawned
-        //    isSpawn = true;
-        //    wave++;
-        //    newWave.totalWave--;
-        //    newWave.UpdateWaveDisplay();
+        if (enemiesLeft == 0 && !isSpawn)
+        //else
+        {
+            // Start a new wave when all enemies are spawned
+            isSpawn = true;
+            wave++;
+            newWave.totalWave--;
+            newWave.UpdateWaveDisplay();
+            StartCoroutine("spawnerTimer");
 
-        //    float delay = 2.0f; 
-        //    delay -= Time.deltaTime;
+        }
+    }
 
-        //    if (delay <= 0.0f)
-        //    {
-        //        StartWave();
-        //        isSpawn = false;
-        //    }
+    IEnumerator spawnerTimer()
+    {
+        yield return new WaitForSeconds(10f);
 
-
-        //}
+        StartWave();
     }
 
     private void Spawn()
