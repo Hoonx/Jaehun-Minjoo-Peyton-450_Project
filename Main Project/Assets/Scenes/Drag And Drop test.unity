@@ -8430,6 +8430,8 @@ MonoBehaviour:
   - {fileID: 6210134935434965732, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   wave: 1
   timeBetweenEnemiesSpawn: 0.5
+  enemiesLeft: 0
+  newWave: {fileID: 1443857057}
 --- !u!1001 &1928382552
 PrefabInstance:
   m_ObjectHideFlags: 0

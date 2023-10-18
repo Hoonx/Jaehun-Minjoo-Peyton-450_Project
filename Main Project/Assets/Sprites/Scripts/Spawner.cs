@@ -7,10 +7,12 @@ public class Spawner : MonoBehaviour
     public GameObject[] Zombie;
     public int wave = 1;
     private int enemiesNum;
+    //enemiesNum is how many enemies we should spawn
     private float spawnTime;
     private bool isSpawn = false;
     public float timeBetweenEnemiesSpawn = 0.5f;
     public int enemiesLeft;
+    //enemiesLeft is how many enemies are left
 
 
     public NewWave newWave;
@@ -35,22 +37,22 @@ public class Spawner : MonoBehaviour
         }
 
         if (enemiesLeft == 0 && !isSpawn)
-        //else
         {
             // Start a new wave when all enemies are spawned
             isSpawn = true;
-            wave++;
-            newWave.totalWave--;
-            newWave.UpdateWaveDisplay();
             StartCoroutine("spawnerTimer");
 
         }
+        
     }
 
     IEnumerator spawnerTimer()
     {
         yield return new WaitForSeconds(10f);
-
+        
+        wave++;
+        newWave.totalWave--;
+        newWave.UpdateWaveDisplay();
         StartWave();
     }
 
@@ -74,14 +76,13 @@ public class Spawner : MonoBehaviour
         return wave * 5; 
     }
 
-    public void    StartWave()
+    public void StartWave()
     {
         
         enemiesNum = EnemiesForWave(wave);
         //enemiesLeft = enemiesNum;
 
         spawnTime = Time.time + timeBetweenEnemiesSpawn; // Start spawning immediately
-        //wave++;
     }
 
 

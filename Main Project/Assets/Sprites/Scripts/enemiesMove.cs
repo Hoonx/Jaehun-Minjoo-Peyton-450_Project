@@ -36,7 +36,6 @@ public class EnemiesMove : MonoBehaviour
             {
 
                 target = LevelManager.main.path[pathIndex];
-                //Destroy(gameObject)
             }
         }
 
