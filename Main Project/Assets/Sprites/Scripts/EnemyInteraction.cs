@@ -8,8 +8,7 @@ public class EnemyInteraction : MonoBehaviour
     public float health = 15;
     // How Much Money the Enemy Drops
     //private int reward;
- 
-    public Spawner spawner;
+
 
 
     // Start is called before the first frame update
@@ -20,14 +19,13 @@ public class EnemyInteraction : MonoBehaviour
         health -= x;
         if (health <= 0) {
             death();
-            spawner.enemiesLeft--;
         }
     }
 
     private void death() 
     {
         Destroy(transform.gameObject);
-        spawner.enemiesLeft--;
+        Spawner.instance.enemiesLeft--;
     }
 
 }

@@ -7,11 +7,10 @@ public class EnemiesMove : MonoBehaviour
     public Rigidbody2D _rb;
     public float moveSpeed = 5f;
     public Spawner spawner;
-    
-
 
     private Transform target;
     private int pathIndex = 0;
+    
 
 
     // Start is called before the first frame update
@@ -29,8 +28,8 @@ public class EnemiesMove : MonoBehaviour
             if (pathIndex == LevelManager.main.path.Length)
             {
                 Destroy(gameObject);
-                spawner.enemiesLeft--;
-                return;
+                Spawner.instance.enemiesLeft--;
+                return; 
             }
             else
             {

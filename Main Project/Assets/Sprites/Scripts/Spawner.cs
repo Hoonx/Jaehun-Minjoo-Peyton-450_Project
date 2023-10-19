@@ -11,11 +11,18 @@ public class Spawner : MonoBehaviour
     private float spawnTime;
     private bool isSpawn = false;
     public float timeBetweenEnemiesSpawn = 0.5f;
+
+    public static Spawner instance;
     public int enemiesLeft;
     //enemiesLeft is how many enemies are left
 
 
     public NewWave newWave;
+
+    void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +42,15 @@ public class Spawner : MonoBehaviour
                 spawnTime = Time.time + timeBetweenEnemiesSpawn;
             }
         }
-
-        if (enemiesLeft == 0 && !isSpawn)
+        
+        if (wave <5 && enemiesLeft == 0 && !isSpawn)
         {
             // Start a new wave when all enemies are spawned
             isSpawn = true;
             StartCoroutine("spawnerTimer");
 
-        }
+        
+    }
         
     }
 
@@ -54,6 +62,9 @@ public class Spawner : MonoBehaviour
         newWave.totalWave--;
         newWave.UpdateWaveDisplay();
         StartWave();
+        isSpawn = false;
+
+        StartCoroutine("spawnerTimer");
     }
 
     private void Spawn()
@@ -80,7 +91,7 @@ public class Spawner : MonoBehaviour
     {
         
         enemiesNum = EnemiesForWave(wave);
-        //enemiesLeft = enemiesNum;
+        enemiesLeft += enemiesNum;
 
         spawnTime = Time.time + timeBetweenEnemiesSpawn; // Start spawning immediately
     }
