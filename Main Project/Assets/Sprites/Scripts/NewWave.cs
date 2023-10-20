@@ -7,8 +7,7 @@ public class NewWave : MonoBehaviour
 {
     public Spawner spawner;
     public int totalWave = 5;
-    public Text waveText
-        ;
+    public Text waveText;
 
     private void Awake()
     {
