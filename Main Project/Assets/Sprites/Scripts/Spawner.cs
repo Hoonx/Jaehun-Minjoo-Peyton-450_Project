@@ -1,21 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject[] Zombie;
-    public int wave = 1;
-    private int enemiesNum;
-    //enemiesNum is how many enemies we should spawn
-    private float spawnTime;
-    private bool isSpawn = false;
+    public int wave = 0; // Initialize wave as 0
+    private int enemiesNum; // total number of enemies that should spawn
     public float timeBetweenEnemiesSpawn = 0.5f;
+    private float spawnTime;
+    private float timeBetweenWaves = 20f;
+    public bool isSpawn = false;
+    public int enemiesLeft; //enemies left that are alive
 
     public static Spawner instance;
-    public int enemiesLeft;
-    //enemiesLeft is how many enemies are left
-
 
     public NewWave newWave;
 
@@ -23,53 +20,70 @@ public class Spawner : MonoBehaviour
     {
         instance = this;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        StartWave();
+        StartCoroutine(StartWaves());
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Check if we should spawn
-        if (enemiesNum > 0)
+        if (enemiesNum > 0 && Time.time >= spawnTime)
         {
-            if (Time.time >= spawnTime)
-            {
-                Spawn();
-                enemiesNum--;
-                spawnTime = Time.time + timeBetweenEnemiesSpawn;
-            }
+            Spawn();
+            enemiesNum--;
+            spawnTime = Time.time + timeBetweenEnemiesSpawn;
         }
-        
-        if (wave <5 && enemiesLeft == 0 && !isSpawn)
-        {
-            // Start a new wave when all enemies are spawned
-            isSpawn = true;
-            StartCoroutine("spawnerTimer");
-
-        
-    }
-        
     }
 
-    IEnumerator spawnerTimer()
+    IEnumerator StartWaves()
     {
-        yield return new WaitForSeconds(10f);
-        
-        wave++;
+        // Add a delay before starting the first wave
+        yield return new WaitForSeconds(5f);
+
+        // Start the first wave
+        NextWave();
+
+        while (true)
+        {
+            // Wait until all enemies from the current wave are defeated
+            yield return new WaitUntil(() => enemiesLeft == 0);
+            wave++;
+
+            // Check if wave count exceeds limit
+            if (wave > 5)
+            {
+                yield break; // Stop spawning waves if we've reached the maximum
+            }
+
+            // Wait for the specified delay between waves
+            yield return new WaitForSeconds(timeBetweenWaves);
+
+            // Start the next wave
+            NextWave();
+        }
+    }
+
+
+    public void NextWave()
+    {
+        // Determine how many enemies to spawn for this wave
+        enemiesNum = EnemiesForWave(wave);
+        enemiesLeft += enemiesNum;
+
         newWave.totalWave--;
         newWave.UpdateWaveDisplay();
-        StartWave();
-        isSpawn = false;
 
-        StartCoroutine("spawnerTimer");
+        spawnTime = Time.time+timeBetweenEnemiesSpawn; 
+
+        // Now increment wave for the next cycle
+        
     }
+
 
     private void Spawn()
     {
-        // Check if the Zombie array is not empty
         if (Zombie.Length > 0)
         {
             GameObject spawnedZombies = Zombie[0];
@@ -83,18 +97,6 @@ public class Spawner : MonoBehaviour
 
     private int EnemiesForWave(int wave)
     {
-
-        return wave * 5; 
+        return wave * 5;
     }
-
-    public void StartWave()
-    {
-        
-        enemiesNum = EnemiesForWave(wave);
-        enemiesLeft += enemiesNum;
-
-        spawnTime = Time.time + timeBetweenEnemiesSpawn; // Start spawning immediately
-    }
-
-
 }
