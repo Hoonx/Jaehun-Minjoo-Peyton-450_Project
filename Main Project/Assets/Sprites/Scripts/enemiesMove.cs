@@ -10,6 +10,7 @@ public class EnemiesMove : MonoBehaviour
 
     private Transform target;
     private int pathIndex = 0;
+    public Animator anim;
     
 
 
@@ -17,6 +18,7 @@ public class EnemiesMove : MonoBehaviour
     void Start()
     {
         target = LevelManager.main.path[pathIndex];
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,7 +46,14 @@ public class EnemiesMove : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
-
+        Debug.Log(direction);
+        if (direction.x == -1)
+        {
+            anim.SetBool("WalkForward", true);
+        }
+        else {
+            anim.SetBool("WalkForward", false);
+        }
         _rb.velocity = direction * moveSpeed;        
     }
 }

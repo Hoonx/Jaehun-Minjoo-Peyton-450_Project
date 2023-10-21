@@ -20,7 +20,7 @@ public class tower_prototype : MonoBehaviour
             if (tower.selected) { }
             else
             {
-                collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(5);
+                collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(10);
                 attackAnim.SetBool("Trigger", true);
             }
         }

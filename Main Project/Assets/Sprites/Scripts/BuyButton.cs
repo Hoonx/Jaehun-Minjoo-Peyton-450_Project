@@ -26,7 +26,7 @@ public class BuyButton : MonoBehaviour
     }
     private void UpdateMoneyDisplay()
     {
-        moneyText.text = "Money: " + money.ToString();
+        moneyText.text =  money.ToString();
     }
 
 }

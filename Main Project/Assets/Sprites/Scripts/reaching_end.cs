@@ -42,6 +42,6 @@ public class reaching_end : MonoBehaviour
 
     public void UpdateHealthDisplay()
     {
-        healthText.text = "Health: " + health.ToString();
+        healthText.text =  health.ToString();
     }
 }

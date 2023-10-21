@@ -21,6 +21,7 @@ public class TowerTestControl : MonoBehaviour
     public Sprite left;
     public int facing;
     bool mouseTouch;
+    public Animator anim;
     
     void Start()
     {
@@ -28,6 +29,7 @@ public class TowerTestControl : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<Collider2D>();
         originalColor = sprite.color;
+        anim = GetComponent<Animator>();
         
 
     }
@@ -108,13 +110,16 @@ public class TowerTestControl : MonoBehaviour
                 if (facing > 1)
                 {
                     sprite.sprite = left;
+                    anim.SetInteger("Facing", 2);
                 }
                 else if (facing < 1)
                 {
                     sprite.sprite = right;
+                    anim.SetInteger("Facing", 0);
                 }
                 else {
                     sprite.sprite = forward;
+                    anim.SetInteger("Facing", 1);
                 }
                 mouse.holding = false;
                 transform.position = platformPosition;
