@@ -29,4 +29,13 @@ public class BuyButton : MonoBehaviour
         moneyText.text =  money.ToString();
     }
 
+    public void AddMoney(int amount)
+    {
+        money += amount;
+        UpdateMoneyDisplay();
+        Debug.Log("Total Money now: " + money);
+    }
+
+
 }
+

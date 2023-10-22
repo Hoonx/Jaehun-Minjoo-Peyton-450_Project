@@ -2429,7 +2429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 400
-  unit: {fileID: 0}
+  unit: {fileID: 6210134935434965732, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   moneyText: {fileID: 606062903}
 --- !u!114 &606062903
 MonoBehaviour:

@@ -46,7 +46,7 @@ public class EnemiesMove : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
-        Debug.Log(direction);
+        //Debug.Log(direction);
         if (direction.x == -1)
         {
             anim.SetBool("WalkForward", true);

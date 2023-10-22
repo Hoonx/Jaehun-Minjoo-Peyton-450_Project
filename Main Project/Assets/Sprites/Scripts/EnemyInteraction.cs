@@ -15,7 +15,10 @@ public class EnemyInteraction : MonoBehaviour
 
 
     // Start is called before the first frame update
-  
+    private void Start()
+    {
+        buy = FindObjectOfType<BuyButton>();
+    }
 
     public void takeDamage(float x)
     {
@@ -30,7 +33,7 @@ public class EnemyInteraction : MonoBehaviour
         Destroy(transform.gameObject);
         Spawner.instance.enemiesLeft--;
         enemiesKilled++;
-        buy.money += reward;
+        buy.AddMoney(reward);
 
     }
 
