@@ -5,21 +5,19 @@ using UnityEngine;
 public class EnemyInteraction : MonoBehaviour
 {
     // Enemy Health
-    public float health = 10;
+    public float health = 15;
+    public int enemiesKilled = 0;
+    public BuyButton buy;
+    public int money;
     // How Much Money the Enemy Drops
-    private int reward;
-    // How Much Damage the Enemy Does if it Reaches the End
-    private int damage = 1;
+    private int reward = 50; //Place holder to test out implementation, can change reward money later
+
+
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        // Call enemy Setup
-    }
-
-    private void enemySetup()
-    {
-        // We should implement the movement here and below with additional functions.
+        buy = FindObjectOfType<BuyButton>();
     }
 
     public void takeDamage(float x)
@@ -33,10 +31,10 @@ public class EnemyInteraction : MonoBehaviour
     private void death() 
     {
         Destroy(transform.gameObject);
+        Spawner.instance.enemiesLeft--;
+        enemiesKilled++;
+        buy.AddMoney(reward);
+
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

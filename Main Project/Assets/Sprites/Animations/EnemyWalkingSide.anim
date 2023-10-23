@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: idle
+  m_Name: EnemyWalkingSide
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
+      value: {fileID: 1033633494, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
+    - time: 0.25
+      value: {fileID: 1126801478, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
+    - time: 0.5
+      value: {fileID: 369447171, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
+    - time: 0.75
+      value: {fileID: -1899697505, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 1
+  m_SampleRate: 4
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -44,7 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
+    - {fileID: 1033633494, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
+    - {fileID: 1126801478, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
+    - {fileID: 369447171, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
+    - {fileID: -1899697505, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

@@ -54,3 +54,6 @@ TagManager:
   - name: mouse
     uniqueID: 1766551543
     locked: 0
+  - name: Crypt
+    uniqueID: 3600264339
+    locked: 0

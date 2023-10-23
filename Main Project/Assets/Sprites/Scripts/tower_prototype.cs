@@ -23,12 +23,8 @@ public class tower_prototype : MonoBehaviour
             if (tower.selected) { }
             else
             {
-                if (Time.time > nextFire) {
-                    Debug.Log("next fire");
-                    nextFire = Time.time + firerate;
-                    collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(5);
-                    attackAnim.SetBool("Trigger", true);
-                }
+                collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(10);
+                attackAnim.SetBool("Trigger", true);
             }
         }
     }

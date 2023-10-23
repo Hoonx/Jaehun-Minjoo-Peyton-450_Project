@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2942a8185be71f42bd0b11cde1b8788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
+  currentSprite: {fileID: 0}
   staticSprite: {fileID: -1108026646, guid: 073e4aaa31dcdf6499e28759b95afcaa, type: 3}
   holdSprite: {fileID: 1166408510, guid: 073e4aaa31dcdf6499e28759b95afcaa, type: 3}
   grabSprite: {fileID: 1986039471, guid: 073e4aaa31dcdf6499e28759b95afcaa, type: 3}
