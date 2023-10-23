@@ -48,6 +48,8 @@ public class MouseController : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
+        mousePositionInWorld.x += .03f;
+        mousePositionInWorld.y -= .03f;
         transform.position = mousePositionInWorld;
        
         

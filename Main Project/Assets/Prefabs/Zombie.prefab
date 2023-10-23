@@ -54,7 +54,7 @@ MonoBehaviour:
   _rb: {fileID: 1841697504912084516}
   moveSpeed: 2
   spawner: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 835911296515305322}
 --- !u!212 &9191207471150022604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,8 +93,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -699212587
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1142577791, guid: bedab2f8fc472904a91088e14136bc7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

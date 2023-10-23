@@ -45,6 +45,9 @@ TagManager:
   - name: Plots
     uniqueID: 3935982511
     locked: 0
+  - name: Enemies
+    uniqueID: 3595754709
+    locked: 0
   - name: Units
     uniqueID: 1837429167
     locked: 0
