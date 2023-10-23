@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyInteraction : MonoBehaviour
 {
     // Enemy Health
-    public float health = 15;
+    public float health = 10;
     // How Much Money the Enemy Drops
     private int reward;
     // How Much Damage the Enemy Does if it Reaches the End

@@ -8,6 +8,9 @@ public class tower_prototype : MonoBehaviour
     TowerTestControl tower;
     public Animator attackAnim;
 
+    public float firerate;
+    float nextFire;
+    private GameObject currentTarget;
     private void Start()
     {
         tower = GetComponent<TowerTestControl>();
@@ -20,11 +23,16 @@ public class tower_prototype : MonoBehaviour
             if (tower.selected) { }
             else
             {
-                collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(5);
-                attackAnim.SetBool("Trigger", true);
+                if (Time.time > nextFire) {
+                    Debug.Log("next fire");
+                    nextFire = Time.time + firerate;
+                    collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(5);
+                    attackAnim.SetBool("Trigger", true);
+                }
             }
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision) {
         attackAnim.SetBool("Trigger", false);
     }
