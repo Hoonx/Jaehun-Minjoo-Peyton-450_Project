@@ -55,19 +55,18 @@ public class tower_prototype : MonoBehaviour
         return Vector2.Distance(currentTarget.position, transform.position) <= towerRange;
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision) {
-    //     collision.gameObject.GetComponent<Health>().takeDamage(damage);
-    // }
-    // private void OnTriggerEnter2D(Collider2D collision) {
-    //     if (collision.gameObject.tag == "enemy") {
-    //         if (tower.selected) { }
-    //         else
-    //         {
-    //             collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(10);
-    //             attackAnim.SetBool("Trigger", true);
-    //         }
-    //     }
-    // }
+    private void OnCollisionEnter2D(Collision2D collision) {
+         collision.gameObject.GetComponent<Health>().takeDamage(damage);
+    }
+    private void OnTriggerEnter2D(Collider2D collision) {
+         if (collision.gameObject.tag == "enemy") {
+             if (tower.selected) { }
+             else
+             {
+                 attackAnim.SetBool("Trigger", true);
+             }
+         }
+     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         attackAnim.SetBool("Trigger", false);
