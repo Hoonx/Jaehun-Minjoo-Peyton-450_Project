@@ -13,6 +13,7 @@ public class tower_prototype : MonoBehaviour
     private float nextFire;
     [SerializeField] private int damage = 1;
     private Transform currentTarget;
+    private GameObject projectilePrefab;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class tower_prototype : MonoBehaviour
     private void shoot() {
         Debug.Log("Shoot");
         // GameObject projectile = Instantiate(projectile, )
+        Instantiate(projectilePrefab, transform.position, Quaternion.identity);
     }
 
     private void locateTarget() {

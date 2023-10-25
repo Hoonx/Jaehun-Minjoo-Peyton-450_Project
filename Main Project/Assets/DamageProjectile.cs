@@ -11,10 +11,15 @@ public class DamageProjectile : MonoBehaviour
     [SerializeField] private float speed = 10f;
     private Transform target;
 
-    public void setTarget(Transform currentTarget) {
+    
+    public void setTarget(Transform currentTarget) {    
         target = currentTarget;
     }
     private void FixedUpdate() {
+        if (target == null)
+        {
+            return;
+        }
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * speed;
     }

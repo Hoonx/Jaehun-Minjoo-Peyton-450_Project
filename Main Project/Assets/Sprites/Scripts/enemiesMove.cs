@@ -50,7 +50,7 @@ public class EnemiesMove : MonoBehaviour
     {
         bool forwards = true;
         Vector2 direction = (target.position - transform.position).normalized;
-        Debug.Log(direction.x);
+        //Debug.Log(direction.x); 
         if (direction != previousDirection)
         {
             if (forwards)
