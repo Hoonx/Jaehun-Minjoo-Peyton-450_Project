@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
     private float timeBetweenWaves = 20f;
     public bool isSpawn = false;
     public int enemiesLeft; //enemies left that are alive
+    public GameObject restartButton;
 
     public static Spawner instance;
 
@@ -35,6 +36,8 @@ public class Spawner : MonoBehaviour
             enemiesNum--;
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
         }
+
+        
     }
 
     IEnumerator StartWaves()
@@ -54,7 +57,12 @@ public class Spawner : MonoBehaviour
             // Check if wave count exceeds limit
             if (wave > 5)
             {
+                if (enemiesLeft == 0)
+                {
+                    restartButton.SetActive(true);
+                }
                 yield break; // Stop spawning waves if we've reached the maximum
+                
             }
 
             // Wait for the specified delay between waves
