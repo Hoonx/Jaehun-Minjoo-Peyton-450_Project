@@ -13,7 +13,7 @@ public class tower_prototype : MonoBehaviour
     private float nextFire;
     [SerializeField] private int damage = 1;
     private Transform currentTarget;
-    private GameObject projectilePrefab;
+    public GameObject projectilePrefab;
 
     private void Start()
     {
@@ -44,12 +44,18 @@ public class tower_prototype : MonoBehaviour
         Debug.Log("Shoot");
         // GameObject projectile = Instantiate(projectile, )
         Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        if (currentTarget.gameObject.tag == "enemy")
+        {
+            currentTarget.gameObject.GetComponent<Health>().takeDamage(damage);
+
+        }
     }
 
     private void locateTarget() {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, towerRange, (Vector2) transform.position, 0f, enemyMask);
         if (hits.Length > 0) {
             currentTarget = hits[0].transform;
+            
         }
     }
 
@@ -57,15 +63,16 @@ public class tower_prototype : MonoBehaviour
         return Vector2.Distance(currentTarget.position, transform.position) <= towerRange;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (tower.selected) { 
-        }
-        else {
-            if (collision.gameObject.tag == "enemy"){
-                collision.gameObject.GetComponent<Health>().takeDamage(damage);
-            }
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision) {
+    //    if (tower.selected) { 
+    //    }
+    //    else {
+    //        if (collision.gameObject.tag == "enemy"){
+    //            collision.gameObject.GetComponent<Health>().takeDamage(damage);
+                
+    //        }
+    //    }
+    //}
     private void OnTriggerEnter2D(Collider2D collision) {
          if (collision.gameObject.tag == "enemy") {
              if (tower.selected) { }
