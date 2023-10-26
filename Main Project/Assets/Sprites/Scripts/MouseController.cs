@@ -28,7 +28,7 @@ public class MouseController : MonoBehaviour
 
         if (other.gameObject.GetComponent<TowerTestControl>())
         {
-            if (holding)
+            if (other.gameObject.GetComponent<TowerTestControl>().selected)
             {
                 currentSprite.sprite = grabSprite;
             }
@@ -48,8 +48,8 @@ public class MouseController : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
-        mousePositionInWorld.x += .03f;
-        mousePositionInWorld.y -= .03f;
+        mousePositionInWorld.x += .06f;
+        mousePositionInWorld.y -= .06f;
         transform.position = mousePositionInWorld;
        
         

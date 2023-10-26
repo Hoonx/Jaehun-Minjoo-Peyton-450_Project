@@ -48,6 +48,9 @@ TagManager:
   - name: Enemies
     uniqueID: 3595754709
     locked: 0
+  - name: Crypt
+    uniqueID: 3600264339
+    locked: 0
   - name: Units
     uniqueID: 1837429167
     locked: 0
@@ -56,7 +59,4 @@ TagManager:
     locked: 0
   - name: mouse
     uniqueID: 1766551543
-    locked: 0
-  - name: Crypt
-    uniqueID: 3600264339
     locked: 0

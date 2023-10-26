@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemiesMove : MonoBehaviour
 {
     public Rigidbody2D _rb;
-    public float moveSpeed = 5f;
+    public float moveSpeed;
     public Spawner spawner;
 
     private Transform target;

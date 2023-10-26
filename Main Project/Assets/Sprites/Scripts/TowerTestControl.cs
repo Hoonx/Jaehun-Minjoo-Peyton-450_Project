@@ -109,16 +109,16 @@ public class TowerTestControl : MonoBehaviour
             {
                 if (facing > 1)
                 {
-                    sprite.sprite = left;
+
                     anim.SetInteger("Facing", 2);
                 }
                 else if (facing < 1)
                 {
-                    sprite.sprite = right;
+
                     anim.SetInteger("Facing", 0);
                 }
                 else {
-                    sprite.sprite = forward;
+                    
                     anim.SetInteger("Facing", 1);
                 }
                 mouse.holding = false;

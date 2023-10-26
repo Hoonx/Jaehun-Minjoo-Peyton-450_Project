@@ -9,17 +9,21 @@ public class BuyButton : MonoBehaviour
     public int money;
     public GameObject unit;
     public Text moneyText;
+    //public PlatformController coffin;
+    public Vector3 position;
 
     public void Start()
     {
         UpdateMoneyDisplay();
+        //coffin = GetComponent<PlatformController>();
+        
     }
     public void OnButtonPress() {
         if (money >= 200) {
             money -= 200;
             UpdateMoneyDisplay();
             GameObject newUnit = Instantiate(unit);
-            newUnit.transform.position = new Vector3(0, 0, 0);
+            newUnit.transform.position = position;
 
         }
 
