@@ -8,6 +8,7 @@ public class EnemyInteraction : MonoBehaviour
     public float health = 15;
     public int enemiesKilled = 0;
     public BuyButton buy;
+    public int timer = 0;
 
     // How Much Money the Enemy Drops
     private int reward = 50; //Place holder to test out implementation, can change reward money later
@@ -23,6 +24,7 @@ public class EnemyInteraction : MonoBehaviour
     public void takeDamage(float x)
     {
         health -= x;
+        Debug.Log(health);
         if (health <= 0) {
             death();
         }

@@ -11,9 +11,11 @@ public class tower_prototype : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private float firerate = 1f;
     private float nextFire;
-    [SerializeField] private int damage = 10;
+    public int timeModify;
+    private int damage = 10;
     private Transform currentTarget;
     public GameObject projectilePrefab;
+    
 
     private void Start()
     {
@@ -24,7 +26,7 @@ public class tower_prototype : MonoBehaviour
     }
 
     private void Update() {
-        if (currentTarget == null) {
+       /* if (currentTarget == null) {
             locateTarget();
             return;
         }
@@ -37,48 +39,66 @@ public class tower_prototype : MonoBehaviour
                 shoot();
                 nextFire = 0f;
             }
-        }
-    }
+        }*/
+    } 
 
-    private void shoot() {
-        Debug.Log("Shoot");
-        // GameObject projectile = Instantiate(projectile, )
-        Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        if (currentTarget.gameObject.tag == "enemy")
-        {
-            currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+    /* private void shoot() {
+         Debug.Log("Shoot");
+         // GameObject projectile = Instantiate(projectile, )
+         Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+         if (currentTarget.gameObject.tag == "enemy")
+         {
+             currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
 
-        }
-    }
+         }
+     } */
 
-    private void locateTarget() {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, towerRange, (Vector2) transform.position, 0f, enemyMask);
-        if (hits.Length > 0) {
-            currentTarget = hits[0].transform;
-            
-        }
-    }
+    /*  private void locateTarget() {
+          RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, towerRange, (Vector2) transform.position, 0f, enemyMask);
+          if (hits.Length > 0) {
+              currentTarget = hits[0].transform;
 
-    private bool targetInRange() {
-        return Vector2.Distance(currentTarget.position, transform.position) <= towerRange;
-    }
+          }
+      }
+
+      private bool targetInRange() {
+          return Vector2.Distance(currentTarget.position, transform.position) <= towerRange;
+      }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyInteraction>()) {
+            collision.gameObject.GetComponent<EnemyInteraction>().timer = 0;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (tower.selected)
         {
         }
         else
         {
-            if (collision.gameObject.tag == "enemy")
+            if (collision.gameObject.GetComponent<EnemyInteraction>())
             {
-                currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+               collision.gameObject.GetComponent<EnemyInteraction>().timer += 1;
+                Debug.Log(collision.gameObject.GetComponent<EnemyInteraction>().timer);
+                //if (collision.gameObject.GetComponent<EnemyInteraction>().timer % 2 == 0) {
+                    currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+                //}
+               
 
             }
         }
     }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyInteraction>()) {
+            collision.gameObject.GetComponent<EnemyInteraction>().timer = 0;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
-         if (collision.gameObject.tag == "enemy") {
+         if (collision.gameObject.GetComponent<EnemyInteraction>()) {
              if (tower.selected) { }
              else
              {

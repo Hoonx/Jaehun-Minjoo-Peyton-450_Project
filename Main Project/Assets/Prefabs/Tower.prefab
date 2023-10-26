@@ -190,7 +190,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   firerate: 1
-  damage: 5
+  timeModify: 3
   projectilePrefab: {fileID: 7891858392165558214, guid: dd52105db21da451f88249ccf6a2da31, type: 3}
 --- !u!95 &-2008584799984232240
 Animator:
