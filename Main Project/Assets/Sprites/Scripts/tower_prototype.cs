@@ -11,7 +11,7 @@ public class tower_prototype : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private float firerate = 1f;
     private float nextFire;
-    [SerializeField] private int damage = 1;
+    [SerializeField] private int damage = 10;
     private Transform currentTarget;
     public GameObject projectilePrefab;
 
@@ -46,7 +46,7 @@ public class tower_prototype : MonoBehaviour
         Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         if (currentTarget.gameObject.tag == "enemy")
         {
-            currentTarget.gameObject.GetComponent<Health>().takeDamage(damage);
+            currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
 
         }
     }
@@ -63,20 +63,20 @@ public class tower_prototype : MonoBehaviour
         return Vector2.Distance(currentTarget.position, transform.position) <= towerRange;
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (tower.selected)
-    //    {
-    //    }
-    //    else
-    //    {
-    //        if (collision.gameObject.tag == "enemy")
-    //        {
-    //            collision.gameObject.GetComponent<Health>().takeDamage(damage);
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (tower.selected)
+        {
+        }
+        else
+        {
+            if (collision.gameObject.tag == "enemy")
+            {
+                currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
 
-    //        }
-    //    }
-    //}
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
          if (collision.gameObject.tag == "enemy") {
              if (tower.selected) { }

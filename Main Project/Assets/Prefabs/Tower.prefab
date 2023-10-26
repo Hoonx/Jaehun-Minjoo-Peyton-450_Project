@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1837429167
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -189,8 +189,8 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
-  fireRate: 1
-  damage: 1
+  firerate: 1
+  damage: 5
   projectilePrefab: {fileID: 7891858392165558214, guid: dd52105db21da451f88249ccf6a2da31, type: 3}
 --- !u!95 &-2008584799984232240
 Animator:
