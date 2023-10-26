@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class reaching_end : MonoBehaviour
 {
-    public int health = 3;
+    public int cryptHealth = 3;
     public GameObject restartButton;
     public Text healthText;
 
@@ -18,7 +18,7 @@ public class reaching_end : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject && collision.gameObject.tag == "enemy") {
             Debug.Log("End Reached");
-            health -= 1;
+            cryptHealth -= 1;
             UpdateHealthDisplay();
 
 
@@ -26,7 +26,7 @@ public class reaching_end : MonoBehaviour
     }
    
     void Update() {
-        if (health <= 0)
+        if (cryptHealth <= 0)
         {
             // Reset Level
             Time.timeScale = 0;
@@ -34,14 +34,12 @@ public class reaching_end : MonoBehaviour
             UpdateHealthDisplay();
 
         }
-        else {
-            Time.timeScale = 1;
-        }
+        
         
     }
 
     public void UpdateHealthDisplay()
     {
-        healthText.text =  health.ToString();
+        healthText.text = cryptHealth.ToString();
     }
 }

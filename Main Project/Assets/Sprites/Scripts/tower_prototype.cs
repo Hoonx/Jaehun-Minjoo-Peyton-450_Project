@@ -63,13 +63,17 @@ public class tower_prototype : MonoBehaviour
         return Vector2.Distance(currentTarget.position, transform.position) <= towerRange;
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision) {
-    //    if (tower.selected) { 
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (tower.selected)
+    //    {
     //    }
-    //    else {
-    //        if (collision.gameObject.tag == "enemy"){
+    //    else
+    //    {
+    //        if (collision.gameObject.tag == "enemy")
+    //        {
     //            collision.gameObject.GetComponent<Health>().takeDamage(damage);
-                
+
     //        }
     //    }
     //}

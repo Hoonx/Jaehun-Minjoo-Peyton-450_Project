@@ -8,7 +8,6 @@ public class EnemyInteraction : MonoBehaviour
     public float health = 15;
     public int enemiesKilled = 0;
     public BuyButton buy;
-    public int money;
     // How Much Money the Enemy Drops
     private int reward = 50; //Place holder to test out implementation, can change reward money later
 
