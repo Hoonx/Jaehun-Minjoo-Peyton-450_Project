@@ -12,9 +12,9 @@ public class tower_prototype : MonoBehaviour
     [SerializeField] private float firerate = 1f;
     private float nextFire;
     public int timeModify;
-    private int damage = 10;
-    private Transform currentTarget;
-    public GameObject projectilePrefab;
+    private int damage = 1;
+    //private Transform currentTarget;
+    //public GameObject projectilePrefab;
     
 
     private void Start()
@@ -82,11 +82,11 @@ public class tower_prototype : MonoBehaviour
             if (collision.gameObject.GetComponent<EnemyInteraction>())
             {
                collision.gameObject.GetComponent<EnemyInteraction>().timer += 1;
-                Debug.Log(collision.gameObject.GetComponent<EnemyInteraction>().timer);
-                //if (collision.gameObject.GetComponent<EnemyInteraction>().timer % 2 == 0) {
-                    currentTarget.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
-                //}
-               
+                //Debug.Log(collision.gameObject.GetComponent<EnemyInteraction>().timer);
+                if (collision.gameObject.GetComponent<EnemyInteraction>().timer % timeModify == 0) {
+                    collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+                }
+
 
             }
         }

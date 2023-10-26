@@ -190,8 +190,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   firerate: 1
-  timeModify: 3
-  projectilePrefab: {fileID: 7891858392165558214, guid: dd52105db21da451f88249ccf6a2da31, type: 3}
+  timeModify: 5
 --- !u!95 &-2008584799984232240
 Animator:
   serializedVersion: 5
@@ -242,7 +241,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
