@@ -25,10 +25,12 @@ public class NewWave : MonoBehaviour
             Debug.LogError("success");
             if (totalWave >0)
             {
+                spawner.startNextWaveImmediately = true;
                 spawner.isSpawn = true;
-                spawner.wave++;
+                //spawner.wave++;
                 spawner.NextWave();
-                totalWave--;
+                //spawner.wave++;
+                totalWave = 5- spawner.wave;
                 UpdateWaveDisplay();
             }
             
