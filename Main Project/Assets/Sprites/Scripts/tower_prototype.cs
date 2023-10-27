@@ -81,10 +81,17 @@ public class tower_prototype : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<EnemyInteraction>())
             {
-               collision.gameObject.GetComponent<EnemyInteraction>().timer += 1;
-                //Debug.Log(collision.gameObject.GetComponent<EnemyInteraction>().timer);
-                if (collision.gameObject.GetComponent<EnemyInteraction>().timer % timeModify == 0) {
-                    collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+                if (tower.selected) { }
+                else
+                {
+                    attackAnim.SetBool("Trigger", true);
+                    collision.gameObject.GetComponent<EnemyInteraction>().timer += 1;
+                    //Debug.Log(collision.gameObject.GetComponent<EnemyInteraction>().timer);
+                    if (collision.gameObject.GetComponent<EnemyInteraction>().timer % timeModify == 0)
+                    {
+                        collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+                    }
+
                 }
 
 
@@ -95,6 +102,7 @@ public class tower_prototype : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyInteraction>()) {
             collision.gameObject.GetComponent<EnemyInteraction>().timer = 0;
+            attackAnim.SetBool("Trigger", false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
