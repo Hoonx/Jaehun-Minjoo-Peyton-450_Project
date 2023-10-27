@@ -11,7 +11,7 @@ public class EnemyInteraction : MonoBehaviour
     public int timer = 0;
 
     // How Much Money the Enemy Drops
-    private int reward = 50; //Place holder to test out implementation, can change reward money later
+    private int reward = 10; //Place holder to test out implementation, can change reward money later
 
 
 

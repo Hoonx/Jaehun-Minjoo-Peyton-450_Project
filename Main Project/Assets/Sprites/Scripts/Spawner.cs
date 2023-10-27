@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Spawner : MonoBehaviour
     public bool isSpawn = false;
     public int enemiesLeft; //enemies left that are alive
     public GameObject restartButton;
+    public Text restart;
 
     public static Spawner instance;
 
@@ -39,6 +41,7 @@ public class Spawner : MonoBehaviour
 
         if (wave > 5 && enemiesLeft == 0)
         {
+            //restart.text = "Victory";
             restartButton.SetActive(true);
         }
 
