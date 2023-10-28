@@ -60,3 +60,6 @@ TagManager:
   - name: mouse
     uniqueID: 1766551543
     locked: 0
+  - name: Turret
+    uniqueID: 4202254605
+    locked: 0
