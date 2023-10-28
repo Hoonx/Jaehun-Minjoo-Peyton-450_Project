@@ -9,12 +9,14 @@ public class Spawner : MonoBehaviour
     private int enemiesNum; // total number of enemies that should spawn
     public float timeBetweenEnemiesSpawn = 0.5f;
     private float spawnTime;
-    private float timeBetweenWaves = 20f;
+    private float timeBetweenWaves = 3f;
     public bool isSpawn = false;
     public int enemiesLeft; //enemies left that are alive
     public GameObject restartButton;
     public Text restart;
     public bool startNextWaveImmediately = false;
+    public EnemiesMove enemyMov;
+    public EnemyInteraction enemyHel;
 
     public static Spawner instance;
 
@@ -27,6 +29,8 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        enemyMov.moveSpeed = 1;
+        enemyHel.health = 10;
         StartCoroutine(StartWaves());
     }
 
@@ -42,7 +46,7 @@ public class Spawner : MonoBehaviour
 
         if (wave >= 5 && enemiesLeft == 0)
         {
-            //restart.text = "Victory";
+            restart.text = "Victory:Restart?";
             restartButton.SetActive(true);
         }
 
@@ -96,10 +100,12 @@ public class Spawner : MonoBehaviour
         newWave.totalWave--;
         newWave.UpdateWaveDisplay();
 
-        spawnTime = Time.time+timeBetweenEnemiesSpawn; 
+        spawnTime = Time.time+timeBetweenEnemiesSpawn;
+        enemyHel.health *= 1.25f;
+        enemyMov.moveSpeed += .75f;
 
-        
-        
+
+
     }
 
 

@@ -180,9 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55333253b8d1d49bb898a4d30cf05790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 10
   enemiesKilled: 0
   buy: {fileID: 0}
+  timer: 0
 --- !u!114 &5832678966671051715
 MonoBehaviour:
   m_ObjectHideFlags: 0
