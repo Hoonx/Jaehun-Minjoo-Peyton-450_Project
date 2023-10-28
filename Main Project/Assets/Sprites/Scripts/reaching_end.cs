@@ -29,7 +29,6 @@ public class reaching_end : MonoBehaviour
         if (cryptHealth <= 0)
         {
             // Reset Level
-            Time.timeScale = 0;
             restartButton.SetActive(true);
             UpdateHealthDisplay();
 
@@ -40,6 +39,6 @@ public class reaching_end : MonoBehaviour
 
     public void UpdateHealthDisplay()
     {
-        healthText.text = cryptHealth.ToString();
+        healthText.text = "Health: " + cryptHealth.ToString();
     }
 }
