@@ -16,10 +16,10 @@ public class J_Turret : MonoBehaviour
     private Transform target;
     private float waitTime;
 
-    private void OnDrawGizmosSelected() {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, transform.forward, range);
-    }
+    // private void OnDrawGizmosSelected() {
+    //     Handles.color = Color.red;
+    //     Handles.DrawWireDisc(transform.position, transform.forward, range);
+    // }
 
     private void Update() {
         if (target == null) {
@@ -40,9 +40,9 @@ public class J_Turret : MonoBehaviour
     }
 
     private void fire() {
-        GameObject projectileObject = Instantiate(projectile, firePoint.position, Quaternion.identity);
-        Projectile projectileScript = projectileObject.GetComponent<Projectile>();
-        projectileScript.defineTarget(target);
+        // GameObject projectileObject = Instantiate(projectile, firePoint.position, Quaternion.identity);
+        // Projectile projectileScript = projectileObject.GetComponent<Projectile>();
+        // projectileScript.defineTarget(target);
     }
 
     private bool isTargetInRange() {
