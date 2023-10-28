@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Spawner : MonoBehaviour
     public bool isSpawn = false;
     public int enemiesLeft; //enemies left that are alive
     public GameObject restartButton;
+    public Text restart;
+    public bool startNextWaveImmediately = false;
 
     public static Spawner instance;
 
@@ -37,7 +40,13 @@ public class Spawner : MonoBehaviour
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
         }
 
-        
+        if (wave >= 5 && enemiesLeft == 0)
+        {
+            //restart.text = "Victory";
+            restartButton.SetActive(true);
+        }
+
+
     }
 
     IEnumerator StartWaves()
@@ -52,22 +61,26 @@ public class Spawner : MonoBehaviour
         {
             // Wait until all enemies from the current wave are defeated
             yield return new WaitUntil(() => enemiesLeft == 0);
-            wave++;
+            //wave++;
 
             // Check if wave count exceeds limit
             if (wave > 5)
             {
-                if (enemiesLeft == 0)
-                {
-                    restartButton.SetActive(true);
-                }
                 yield break; // Stop spawning waves if we've reached the maximum
                 
             }
 
             // Wait for the specified delay between waves
+            if (startNextWaveImmediately)
+            {
+                startNextWaveImmediately = false; // Reset the flag
+            }
+            
+            
             yield return new WaitForSeconds(timeBetweenWaves);
+            
 
+            wave++;
             // Start the next wave
             NextWave();
         }
@@ -85,7 +98,7 @@ public class Spawner : MonoBehaviour
 
         spawnTime = Time.time+timeBetweenEnemiesSpawn; 
 
-        // Now increment wave for the next cycle
+        
         
     }
 
