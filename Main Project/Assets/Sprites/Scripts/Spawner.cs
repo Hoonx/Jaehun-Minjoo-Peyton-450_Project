@@ -14,7 +14,6 @@ public class Spawner : MonoBehaviour
     public int enemiesLeft; //enemies left that are alive
     public GameObject restartButton;
     public Text restart;
-    public bool startNextWaveImmediately = false;
     public EnemiesMove enemyMov;
     public EnemyInteraction enemyHel;
 
@@ -75,10 +74,6 @@ public class Spawner : MonoBehaviour
             }
 
             // Wait for the specified delay between waves
-            if (startNextWaveImmediately)
-            {
-                startNextWaveImmediately = false; // Reset the flag
-            }
             
             
             yield return new WaitForSeconds(timeBetweenWaves);

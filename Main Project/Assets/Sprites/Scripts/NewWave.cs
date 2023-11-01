@@ -25,7 +25,6 @@ public class NewWave : MonoBehaviour
             Debug.LogError("success");
             if (totalWave >0)
             {
-                spawner.startNextWaveImmediately = true;
                 spawner.isSpawn = true;
                 //spawner.wave++;
                 spawner.NextWave();

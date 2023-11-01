@@ -8,9 +8,9 @@ public class RestartButton : MonoBehaviour
     // Start is called before the first frame update
     public void OnButtonPress()
     {
-        
-       
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 }

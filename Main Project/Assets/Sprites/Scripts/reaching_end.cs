@@ -12,6 +12,7 @@ public class reaching_end : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         restartButton.SetActive(false);
         UpdateHealthDisplay();
     }
@@ -29,6 +30,7 @@ public class reaching_end : MonoBehaviour
         if (cryptHealth <= 0)
         {
             // Reset Level
+            Time.timeScale = 0;
             restartButton.SetActive(true);
             UpdateHealthDisplay();
 
