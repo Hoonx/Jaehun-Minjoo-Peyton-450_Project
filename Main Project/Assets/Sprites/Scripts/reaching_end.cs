@@ -20,6 +20,7 @@ public class reaching_end : MonoBehaviour
         if (collision.gameObject && collision.gameObject.tag == "enemy") {
             Debug.Log("End Reached");
             cryptHealth -= 1;
+            Spawner.instance.enemiesLeft--;
             UpdateHealthDisplay();
 
 

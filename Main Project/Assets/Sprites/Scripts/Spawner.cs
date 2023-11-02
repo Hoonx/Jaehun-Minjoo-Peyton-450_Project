@@ -16,8 +16,9 @@ public class Spawner : MonoBehaviour
     public EnemiesMove enemyMov;
     public EnemyInteraction enemyHel;
     public Coroutine waveCoroutine;
-
+    public Button nextwaveButton;
     public static Spawner instance;
+    public bool skip = true;
 
     public NewWave newWave;
 
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
     {
         enemyMov.moveSpeed = 1;
         enemyHel.health = 10;
-        StartCoroutine(StartWaves());
+        waveCoroutine = StartCoroutine("StartWaves");
     }
 
     void Update()
@@ -38,10 +39,15 @@ public class Spawner : MonoBehaviour
         // Check if we should spawn
         if (enemiesNum > 0 && Time.time >= spawnTime)
         {
+            nextwaveButton.interactable = false;
             Spawn();
             enemiesNum--;
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
+        } else if (enemiesNum == 0 && enemiesLeft == 0)
+        {
+            nextwaveButton.interactable = true; 
         }
+
 
         //if (wave >= 5 && enemiesLeft == 0)
         //{
@@ -54,20 +60,18 @@ public class Spawner : MonoBehaviour
 
     IEnumerator StartWaves()
     {
-        // Add a delay before starting the first wave
         yield return new WaitForSeconds(2f);
-
         // Start the first wave
         NextWave();
 
-        while (true)
+        while (skip == true)
         {
             // Wait until all enemies from the current wave are defeated
             yield return new WaitUntil(() => enemiesLeft == 0);
 
 
             yield return new WaitForSeconds(timeBetweenWaves);
-            
+
             wave++;
             // Start the next wave
             NextWave();
@@ -90,7 +94,7 @@ public class Spawner : MonoBehaviour
         enemyMov.moveSpeed += .75f;
 
 
-
+       
     }
 
 
@@ -103,13 +107,6 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void StartWaveCoroutine()
-    {
-        if (waveCoroutine == null)
-        {
-            waveCoroutine = StartCoroutine(StartWaves());
-        }
-    }
 
 
 

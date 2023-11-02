@@ -8,7 +8,7 @@ public class NewWave : MonoBehaviour
     public Spawner spawner;
     //public int totalWave = 5;
     public Text waveText;
-   
+
 
     private void Awake()
     {
@@ -22,14 +22,14 @@ public class NewWave : MonoBehaviour
     {
         if (spawner != null)
         {
+            spawner.skip = false;
             Debug.LogError("success");
             spawner.wave++;
-            spawner.StopCurrentWave();
-            spawner.StartWaveCoroutine();
+            //spawner.StopCurrentWave();
+            
             UpdateWaveDisplay();
-            //spawner.NextWave();
-            
-            
+            spawner.NextWave();
+            spawner.skip = true;
         }
         else
         {
