@@ -3602,7 +3602,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1761776198}
   m_OnClick:
     m_PersistentCalls:
@@ -3919,14 +3919,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zombie:
   - {fileID: 6210134935434965732, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
-  wave: 1
+  wave: 0
   timeBetweenEnemiesSpawn: 0.5
   enemiesLeft: 0
   restartButton: {fileID: 2130927622}
   restart: {fileID: 687555973}
   enemyMov: {fileID: 580110643306412921, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   enemyHel: {fileID: -4352649622111520112, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
-  skipwait: 0
+  nextwaveButton: {fileID: 1761776197}
+  skip: 1
   newWave: {fileID: 1443857057}
 --- !u!4 &1962974033 stripped
 Transform:
