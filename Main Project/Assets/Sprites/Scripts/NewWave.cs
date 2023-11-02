@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NewWave : MonoBehaviour
 {
     public Spawner spawner;
-    public int totalWave = 5;
+    //public int totalWave = 5;
     public Text waveText;
    
 
@@ -23,25 +23,21 @@ public class NewWave : MonoBehaviour
         if (spawner != null)
         {
             Debug.LogError("success");
-            if (totalWave >0)
-            {
-                spawner.isSpawn = true;
-                //spawner.wave++;
-                spawner.NextWave();
-                //spawner.wave++;
-                totalWave = 5- spawner.wave;
-                UpdateWaveDisplay();
-            }
+            spawner.wave++;
+            spawner.StopCurrentWave();
+            spawner.StartWaveCoroutine();
+            UpdateWaveDisplay();
+            //spawner.NextWave();
             
-
+            
         }
         else
         {
-            Debug.LogError("Spawner object not assigned or not found in the scene.");
+            Debug.LogError("Spawner object not assigned");
         }
     }
     public void UpdateWaveDisplay()
     {
-        waveText.text = "Waves Left: " + totalWave.ToString();
+        waveText.text = "Waves: " + spawner.wave.ToString();
     }
 }

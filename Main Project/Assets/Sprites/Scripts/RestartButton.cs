@@ -9,7 +9,7 @@ public class RestartButton : MonoBehaviour
     public void OnButtonPress()
     {
 
-        Time.timeScale = 1;
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
     }

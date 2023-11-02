@@ -9,13 +9,13 @@ public class Spawner : MonoBehaviour
     private int enemiesNum; // total number of enemies that should spawn
     public float timeBetweenEnemiesSpawn = 0.5f;
     private float spawnTime;
-    private float timeBetweenWaves = 3f;
-    public bool isSpawn = false;
+    private float timeBetweenWaves = 10f;
     public int enemiesLeft; //enemies left that are alive
     public GameObject restartButton;
     public Text restart;
     public EnemiesMove enemyMov;
     public EnemyInteraction enemyHel;
+    public Coroutine waveCoroutine;
 
     public static Spawner instance;
 
@@ -43,11 +43,11 @@ public class Spawner : MonoBehaviour
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
         }
 
-        if (wave >= 5 && enemiesLeft == 0)
-        {
-            restart.text = "Victory:Restart?";
-            restartButton.SetActive(true);
-        }
+        //if (wave >= 5 && enemiesLeft == 0)
+        //{
+        //    restart.text = "Victory:Restart?";
+        //    restartButton.SetActive(true);
+        //}
 
 
     }
@@ -55,7 +55,7 @@ public class Spawner : MonoBehaviour
     IEnumerator StartWaves()
     {
         // Add a delay before starting the first wave
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         // Start the first wave
         NextWave();
@@ -64,24 +64,14 @@ public class Spawner : MonoBehaviour
         {
             // Wait until all enemies from the current wave are defeated
             yield return new WaitUntil(() => enemiesLeft == 0);
-            //wave++;
 
-            // Check if wave count exceeds limit
-            if (wave > 5)
-            {
-                yield break; // Stop spawning waves if we've reached the maximum
-                
-            }
 
-            // Wait for the specified delay between waves
-            
-            
             yield return new WaitForSeconds(timeBetweenWaves);
             
-
             wave++;
             // Start the next wave
             NextWave();
+
         }
     }
 
@@ -92,7 +82,7 @@ public class Spawner : MonoBehaviour
         enemiesNum = EnemiesForWave(wave);
         enemiesLeft += enemiesNum;
 
-        newWave.totalWave--;
+        //newWave.totalWave--;
         newWave.UpdateWaveDisplay();
 
         spawnTime = Time.time+timeBetweenEnemiesSpawn;
@@ -102,6 +92,25 @@ public class Spawner : MonoBehaviour
 
 
     }
+
+
+    public void StopCurrentWave()
+    {
+        if (waveCoroutine != null)
+        {
+            StopCoroutine(waveCoroutine);
+            waveCoroutine = null;
+        }
+    }
+
+    public void StartWaveCoroutine()
+    {
+        if (waveCoroutine == null)
+        {
+            waveCoroutine = StartCoroutine(StartWaves());
+        }
+    }
+
 
 
     private void Spawn()
