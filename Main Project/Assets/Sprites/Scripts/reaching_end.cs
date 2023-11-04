@@ -12,6 +12,7 @@ public class reaching_end : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         restartButton.SetActive(false);
         UpdateHealthDisplay();
     }
@@ -19,6 +20,7 @@ public class reaching_end : MonoBehaviour
         if (collision.gameObject && collision.gameObject.tag == "enemy") {
             Debug.Log("End Reached");
             cryptHealth -= 1;
+            Spawner.instance.enemiesLeft--;
             UpdateHealthDisplay();
 
 
@@ -29,6 +31,7 @@ public class reaching_end : MonoBehaviour
         if (cryptHealth <= 0)
         {
             // Reset Level
+            Time.timeScale = 0;
             restartButton.SetActive(true);
             UpdateHealthDisplay();
 

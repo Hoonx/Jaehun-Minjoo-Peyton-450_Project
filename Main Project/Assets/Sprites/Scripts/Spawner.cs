@@ -9,16 +9,16 @@ public class Spawner : MonoBehaviour
     private int enemiesNum; // total number of enemies that should spawn
     public float timeBetweenEnemiesSpawn = 0.5f;
     private float spawnTime;
-    private float timeBetweenWaves = 3f;
-    public bool isSpawn = false;
+    private float timeBetweenWaves = 10f;
     public int enemiesLeft; //enemies left that are alive
     public GameObject restartButton;
     public Text restart;
-    public bool startNextWaveImmediately = false;
     public EnemiesMove enemyMov;
     public EnemyInteraction enemyHel;
-
+    public Coroutine waveCoroutine;
+    public Button nextwaveButton;
     public static Spawner instance;
+    public bool skip = true;
 
     public NewWave newWave;
 
@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
     {
         enemyMov.moveSpeed = 1;
         enemyHel.health = 10;
-        StartCoroutine(StartWaves());
+        waveCoroutine = StartCoroutine("StartWaves");
     }
 
     void Update()
@@ -39,54 +39,43 @@ public class Spawner : MonoBehaviour
         // Check if we should spawn
         if (enemiesNum > 0 && Time.time >= spawnTime)
         {
+            nextwaveButton.interactable = false;
             Spawn();
             enemiesNum--;
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
+        } else if (enemiesNum == 0 && enemiesLeft == 0)
+        {
+            nextwaveButton.interactable = true; 
         }
 
-        if (wave >= 5 && enemiesLeft == 0)
-        {
-            restart.text = "Victory:Restart?";
-            restartButton.SetActive(true);
-        }
+
+        //if (wave >= 5 && enemiesLeft == 0)
+        //{
+        //    restart.text = "Victory:Restart?";
+        //    restartButton.SetActive(true);
+        //}
 
 
     }
 
     IEnumerator StartWaves()
     {
-        // Add a delay before starting the first wave
-        yield return new WaitForSeconds(5f);
-
+        yield return new WaitForSeconds(2f);
         // Start the first wave
         NextWave();
 
-        while (true)
+        while (skip == true)
         {
             // Wait until all enemies from the current wave are defeated
             yield return new WaitUntil(() => enemiesLeft == 0);
-            //wave++;
 
-            // Check if wave count exceeds limit
-            if (wave > 5)
-            {
-                yield break; // Stop spawning waves if we've reached the maximum
-                
-            }
 
-            // Wait for the specified delay between waves
-            if (startNextWaveImmediately)
-            {
-                startNextWaveImmediately = false; // Reset the flag
-            }
-            
-            
             yield return new WaitForSeconds(timeBetweenWaves);
-            
 
             wave++;
             // Start the next wave
             NextWave();
+
         }
     }
 
@@ -97,7 +86,7 @@ public class Spawner : MonoBehaviour
         enemiesNum = EnemiesForWave(wave);
         enemiesLeft += enemiesNum;
 
-        newWave.totalWave--;
+        //newWave.totalWave--;
         newWave.UpdateWaveDisplay();
 
         spawnTime = Time.time+timeBetweenEnemiesSpawn;
@@ -105,8 +94,20 @@ public class Spawner : MonoBehaviour
         enemyMov.moveSpeed += .75f;
 
 
-
+       
     }
+
+
+    public void StopCurrentWave()
+    {
+        if (waveCoroutine != null)
+        {
+            StopCoroutine(waveCoroutine);
+            waveCoroutine = null;
+        }
+    }
+
+
 
 
     private void Spawn()
