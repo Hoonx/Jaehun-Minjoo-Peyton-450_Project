@@ -40,9 +40,9 @@ public class J_Turret : MonoBehaviour
     }
 
     private void fire() {
-        // GameObject projectileObject = Instantiate(projectile, firePoint.position, Quaternion.identity);
-        // Projectile projectileScript = projectileObject.GetComponent<Projectile>();
-        // projectileScript.defineTarget(target);
+        GameObject projectileObject = Instantiate(projectile, firePoint.position, Quaternion.identity);
+        J_Projectile projectileScript = projectileObject.GetComponent<J_Projectile>();
+        projectileScript.defineTarget(target);
     }
 
     private bool isTargetInRange() {
