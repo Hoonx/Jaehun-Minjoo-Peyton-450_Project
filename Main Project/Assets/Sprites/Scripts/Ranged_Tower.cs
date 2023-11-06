@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
-public class J_Turret : MonoBehaviour
+public class Ranged_Tower : MonoBehaviour
 {
     [SerializeField] private float range = 5f;
     [SerializeField] private LayerMask enemyMask;
@@ -33,7 +32,7 @@ public class J_Turret : MonoBehaviour
 
     private void fire() {
         GameObject projectileObject = Instantiate(projectile, transform.position, Quaternion.identity);
-        J_Projectile projectileScript = projectileObject.GetComponent<J_Projectile>();
+        Spider_Projectile projectileScript = projectileObject.GetComponent<Spider_Projectile>();
         projectileScript.defineTarget(target);
     }
 
