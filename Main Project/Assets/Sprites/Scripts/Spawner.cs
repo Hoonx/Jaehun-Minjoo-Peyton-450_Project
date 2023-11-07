@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
     public Coroutine waveCoroutine;
     public Button nextwaveButton;
     public static Spawner instance;
-    public bool skip = true;
+    //public bool skip = true;
 
     public NewWave newWave;
 
@@ -45,8 +45,14 @@ public class Spawner : MonoBehaviour
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
         } else if (enemiesNum == 0 && enemiesLeft == 0)
         {
-            nextwaveButton.interactable = true; 
+            nextwaveButton.interactable = true;
+            if (waveCoroutine == null) // Check if the coroutine is not running
+            {
+                RestartWaveCoroutine(); // Restart the coroutine if it's not running
+            }
         }
+
+        
 
 
         //if (wave >= 5 && enemiesLeft == 0)
@@ -60,15 +66,14 @@ public class Spawner : MonoBehaviour
 
     IEnumerator StartWaves()
     {
-        yield return new WaitForSeconds(2f);
-        // Start the first wave
-        NextWave();
+        //yield return new WaitForSeconds(2f);
+        //// Start the first wave
+        //NextWave();
 
-        while (skip == true)
+        while (true)
         {
             // Wait until all enemies from the current wave are defeated
             yield return new WaitUntil(() => enemiesLeft == 0);
-
 
             yield return new WaitForSeconds(timeBetweenWaves);
 
@@ -84,17 +89,15 @@ public class Spawner : MonoBehaviour
     {
         // Determine how many enemies to spawn for this wave
         enemiesNum = EnemiesForWave(wave);
-        enemiesLeft += enemiesNum;
+        enemiesLeft = enemiesNum;
 
         //newWave.totalWave--;
         newWave.UpdateWaveDisplay();
 
         spawnTime = Time.time+timeBetweenEnemiesSpawn;
         enemyHel.health *= 1.25f;
-        enemyMov.moveSpeed += .75f;
+        enemyMov.moveSpeed += .3f;
 
-
-       
     }
 
 
@@ -107,6 +110,10 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void RestartWaveCoroutine()
+    {
+        waveCoroutine = StartCoroutine("StartWaves");
+    }
 
 
 
@@ -116,6 +123,7 @@ public class Spawner : MonoBehaviour
         {
             GameObject spawnedZombies = Zombie[0];
             Instantiate(spawnedZombies, LevelManager.main.startPoint.position, Quaternion.identity);
+            //enemiesLeft++;
         }
         else
         {
