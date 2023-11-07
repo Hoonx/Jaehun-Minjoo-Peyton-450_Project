@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class J_Projectile : MonoBehaviour
+public class Spider_Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     private Transform target;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private int damage = 1;
+    [SerializeField] private float damage = 1;
 
     public void defineTarget(Transform _target) {
         target = _target;
@@ -22,7 +22,8 @@ public class J_Projectile : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D coll) {
-        coll.gameObject.GetComponent<J_Health>().TakeDamage(damage);
+        coll.gameObject.GetComponent<EnemiesMove>().moveSpeed /= 2;
+        coll.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
         Destroy(gameObject);
     }
 }
