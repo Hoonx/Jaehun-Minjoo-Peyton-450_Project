@@ -22,14 +22,14 @@ public class NewWave : MonoBehaviour
     {
         if (spawner != null)
         {
-            spawner.skip = false;
+            //spawner.skip = false;
             Debug.LogError("success");
             spawner.wave++;
-            //spawner.StopCurrentWave();
+            spawner.StopCurrentWave();
             
             UpdateWaveDisplay();
             spawner.NextWave();
-            spawner.skip = true;
+            
         }
         else
         {
