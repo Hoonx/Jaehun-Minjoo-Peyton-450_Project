@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7361020100716895048}
   - component: {fileID: 4070746593380184179}
   - component: {fileID: 2861473192491435728}
-  - component: {fileID: 9035689419765488976}
   m_Layer: 12
   m_Name: Spider_Projectile
   m_TagString: Untagged
@@ -149,18 +148,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9035689419765488976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6803768192643707975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77252a8acd7fb4a6b8342c82fdfbf09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 4070746593380184179}
-  speed: 5
-  damage: 5

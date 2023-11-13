@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -19,8 +20,10 @@ public class Spawner : MonoBehaviour
     public Button nextwaveButton;
     public static Spawner instance;
     //public bool skip = true;
+    public TMP_Text scoreUI;
 
     public NewWave newWave;
+    public int score =0;
 
     void Awake()
     {
@@ -32,6 +35,7 @@ public class Spawner : MonoBehaviour
         enemyMov.moveSpeed = 1;
         enemyHel.health = 10;
         waveCoroutine = StartCoroutine("StartWaves");
+        score = PlayerPrefs.GetInt("Score");
     }
 
     void Update()
@@ -51,7 +55,11 @@ public class Spawner : MonoBehaviour
                 RestartWaveCoroutine(); // Restart the coroutine if it's not running
             }
         }
-
+        if (wave >= score)
+        {
+            score = wave;
+            PlayerPrefs.SetInt("Score", score);
+        }
         
 
 
