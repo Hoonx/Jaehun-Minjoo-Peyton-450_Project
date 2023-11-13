@@ -3319,7 +3319,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1001 &1607779640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3382,8 +3381,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e383c843eeba6e41a45cbdaf253571f, type: 3}
-=======
->>>>>>> c7e6aa382b5f8fe07be313ceb918fdee96b2a6c9
 --- !u!1001 &1619946520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4129,10 +4126,7 @@ MonoBehaviour:
   enemyMov: {fileID: 580110643306412921, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   enemyHel: {fileID: -4352649622111520112, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   nextwaveButton: {fileID: 1761776197}
-<<<<<<< HEAD
   scoreUI: {fileID: 1722032292}
-=======
->>>>>>> c7e6aa382b5f8fe07be313ceb918fdee96b2a6c9
   newWave: {fileID: 1443857057}
   score: 0
 --- !u!4 &1962974033 stripped
@@ -4540,3 +4534,4 @@ SceneRoots:
   - {fileID: 1537344222}
   - {fileID: 447848752}
   - {fileID: 1122283672}
+  - {fileID: 1607779640}
