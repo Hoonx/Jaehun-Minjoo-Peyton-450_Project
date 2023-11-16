@@ -39,17 +39,18 @@ public class TowerTestControl : MonoBehaviour
         if (other.gameObject.GetComponent<MouseController>()) {
             mouseTouch = true;
         }
-        if (other.gameObject.GetComponent<TowerTestControl>())
-        {
-            onPlatform = false;
-        }
-
         if (other.gameObject.GetComponent<PlatformController>())
         {
             platformName = other.gameObject.GetComponent<PlatformController>().name;
             platformPosition = other.gameObject.GetComponent<PlatformController>().transform.position;
             facing = other.gameObject.GetComponent<PlatformController>().orientation;
-            onPlatform = true;
+            if (other.gameObject.GetComponent<PlatformController>().filled == false) {
+                onPlatform = true;
+            }
+            else {
+                onPlatform = false;
+            }
+            
         }
 
 

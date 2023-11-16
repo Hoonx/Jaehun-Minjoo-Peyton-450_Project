@@ -18,6 +18,7 @@ public class MouseController : MonoBehaviour
     {
         Cursor.visible = false;
         currentSprite = GetComponent<SpriteRenderer>();
+        holding = false;
         
         
         
