@@ -7,7 +7,7 @@ public class BuyButton : MonoBehaviour
 {
     // Start is called before the first frame update
     public int money;
-    public GameObject unit;
+    public GameObject[] unit;
     public Text moneyText;
     //public PlatformController coffin;
     public Vector3 position;
@@ -22,7 +22,9 @@ public class BuyButton : MonoBehaviour
         if (money >= 200) {
             money -= 200;
             UpdateMoneyDisplay();
-            GameObject newUnit = Instantiate(unit);
+            int randomSpawn = Random.Range(0, unit.Length);
+            
+            GameObject newUnit = Instantiate(unit[randomSpawn]);
             newUnit.transform.position = position;
 
         }

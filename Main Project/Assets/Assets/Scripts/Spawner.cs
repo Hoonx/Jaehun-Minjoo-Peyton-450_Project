@@ -130,7 +130,9 @@ public class Spawner : MonoBehaviour
     {
         if (Zombie.Length > 0)
         {
-            GameObject spawnedZombies = Zombie[0];
+            //GameObject spawnedZombies = Zombie[0];
+            int randomSpawn = Random.Range(0, Zombie.Length);
+            GameObject spawnedZombies = Zombie[randomSpawn];
             Instantiate(spawnedZombies, LevelManager.main.startPoint.position, Quaternion.identity);
             //enemiesLeft++;
         }
