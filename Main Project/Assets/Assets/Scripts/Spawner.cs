@@ -59,8 +59,9 @@ public class Spawner : MonoBehaviour
         {
             score = wave;
             PlayerPrefs.SetInt("Score", score);
+            scoreUI.text = "Best Score:" + score.ToString();
         }
-        
+        scoreUI.text = "Best Score:" + score.ToString();
 
 
         //if (wave >= 5 && enemiesLeft == 0)

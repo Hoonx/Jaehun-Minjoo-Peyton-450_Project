@@ -4341,7 +4341,7 @@ MonoBehaviour:
   enemyMov: {fileID: 580110643306412921, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   enemyHel: {fileID: -4352649622111520112, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   nextwaveButton: {fileID: 1761776197}
-  scoreUI: {fileID: 0}
+  scoreUI: {fileID: 1722032292}
   newWave: {fileID: 1443857057}
   score: 0
 --- !u!4 &1962974033 stripped
