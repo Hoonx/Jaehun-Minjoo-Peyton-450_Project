@@ -16,6 +16,8 @@ public class TrashCan : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
     }
+
+
     private void OnCollisionStay2D(Collision2D collision)
     {
 
@@ -27,14 +29,18 @@ public class TrashCan : MonoBehaviour
                 Debug.Log("click");
                 Destroy(collision.gameObject);
                 mouse.holding = false;
+                sprite.sprite = closed;
             }
         }
     }
 
+
+
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<TowerTestControl>()) { 
-             sprite.sprite = closed;
+        if (collision.gameObject.GetComponent<TowerTestControl>()) {
+            
+            sprite.sprite = closed;
         }
         
     }
