@@ -109,7 +109,7 @@ public class TowerTestControl : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && onPlatform)
             {
                 
-               /* if (facing > 1)
+               if (facing > 1)
                 {
 
                     anim.SetInteger("Facing", 2);
@@ -122,7 +122,7 @@ public class TowerTestControl : MonoBehaviour
                 else {
                     
                     anim.SetInteger("Facing", 1);
-                } */
+                } 
                 Debug.Log("click");
                 mouse.holding = false;
                 transform.position = platformPosition;

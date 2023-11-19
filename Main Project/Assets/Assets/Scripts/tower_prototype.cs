@@ -7,9 +7,9 @@ public class tower_prototype : MonoBehaviour
 {
     TowerTestControl tower;
     public Animator attackAnim;
-    [SerializeField] private float towerRange = 5f;
-    [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private float firerate = 1f;
+    //[SerializeField] private float towerRange = 5f;
+    //[SerializeField] private LayerMask enemyMask;
+    //[SerializeField] private float firerate = 1f;
     private float nextFire;
     public int timeModify;
     private int damage = 1;
