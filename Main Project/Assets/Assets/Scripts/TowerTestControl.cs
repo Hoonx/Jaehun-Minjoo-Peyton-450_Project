@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerTestControl : MonoBehaviour
 {
     // Start is called before the first frame update
+    public static TowerTestControl instance;
     public bool selected = false;
     SpriteRenderer sprite;
     
@@ -22,7 +23,11 @@ public class TowerTestControl : MonoBehaviour
     public int facing;
     bool mouseTouch;
     public Animator anim;
-    
+
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         

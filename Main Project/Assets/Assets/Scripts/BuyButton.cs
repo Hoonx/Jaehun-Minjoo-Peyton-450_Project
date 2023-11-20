@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BuyButton : MonoBehaviour
 {
+    public static BuyButton instance;
     // Start is called before the first frame update
     public int money;
     public GameObject[] unit;
@@ -12,12 +13,19 @@ public class BuyButton : MonoBehaviour
     //public PlatformController coffin;
     public Vector3 position;
 
+
+    void Awake()
+    {
+        instance = this;
+    }
     public void Start()
     {
         UpdateMoneyDisplay();
         //coffin = GetComponent<PlatformController>();
         
     }
+
+
     public void OnButtonPress() {
         if (money >= 200) {
             money -= 200;
@@ -30,7 +38,8 @@ public class BuyButton : MonoBehaviour
         }
 
     }
-    private void UpdateMoneyDisplay()
+
+    public void UpdateMoneyDisplay()
     {
         moneyText.text =  money.ToString();
     }

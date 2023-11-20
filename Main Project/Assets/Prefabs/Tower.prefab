@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3584363354005539696}
   - component: {fileID: -2008584799984232240}
   - component: {fileID: 4667564255960134037}
+  - component: {fileID: -2880430867320613770}
   m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
@@ -185,12 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAnim: {fileID: -2008584799984232240}
-  towerRange: 3
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  firerate: 1
   timeModify: 5
+  damage: 1
 --- !u!95 &-2008584799984232240
 Animator:
   serializedVersion: 5
@@ -247,3 +244,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
+--- !u!114 &-2880430867320613770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676084900246011227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b48706b472a4fa58213763440a02fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtonPrefab: {fileID: 0}
+  closeButton: {fileID: 0}
+  upgradeCost: 100
+  upgradeMoney: {fileID: 0}

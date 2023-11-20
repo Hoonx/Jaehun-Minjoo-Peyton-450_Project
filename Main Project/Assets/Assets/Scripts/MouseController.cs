@@ -5,9 +5,9 @@ using UnityEngine;
 public class MouseController : MonoBehaviour
 {
     // Start is called before the first frame update
-    
-    
-    
+
+
+    public static MouseController instance;
     public SpriteRenderer currentSprite;
     public Sprite staticSprite;
     public Sprite holdSprite;

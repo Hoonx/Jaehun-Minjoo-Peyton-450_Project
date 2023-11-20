@@ -5,6 +5,7 @@ using UnityEngine;
 public class tower_prototype : MonoBehaviour
 
 {
+    public static tower_prototype instance;
     TowerTestControl tower;
     public Animator attackAnim;
     //[SerializeField] private float towerRange = 5f;
@@ -12,10 +13,15 @@ public class tower_prototype : MonoBehaviour
     //[SerializeField] private float firerate = 1f;
     private float nextFire;
     public int timeModify;
-    private int damage = 1;
+    public int damage = 1;
     //private Transform currentTarget;
     //public GameObject projectilePrefab;
-    
+
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
