@@ -7160,7 +7160,7 @@ MonoBehaviour:
   firstWave: 8
   enemiesPerSecond: 2
   enemyPrefabs:
-  - {fileID: 6728644059733091117, guid: cc26969bd53f044d0be9c633afb8f7b8, type: 3}
+  - {fileID: 6323651829856224139, guid: d5462ca5942584ef39be00d83c0d16fe, type: 3}
   timeBetweenWaves: 5
   difficultyFactor: 0.5
 --- !u!4 &1299814132 stripped

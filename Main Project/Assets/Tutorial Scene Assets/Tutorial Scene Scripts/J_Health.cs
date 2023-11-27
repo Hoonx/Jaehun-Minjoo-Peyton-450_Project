@@ -15,6 +15,7 @@ public class J_Health : MonoBehaviour
 
     public void TakeDamage(float damage) {
         health -= damage;
+        HealthBar.SetHealth(health, maxHealth);
         if (health <= 0) {
             Destroy(gameObject);
         }
