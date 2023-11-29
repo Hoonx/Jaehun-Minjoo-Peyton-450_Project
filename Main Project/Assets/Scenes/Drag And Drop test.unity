@@ -847,13 +847,7 @@ MonoBehaviour:
   unit:
   - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
   - {fileID: 1212648986807808460, guid: 8e383c843eeba6e41a45cbdaf253571f, type: 3}
-  - {fileID: 1212648986807808460, guid: 8e383c843eeba6e41a45cbdaf253571f, type: 3}
-  - {fileID: 1212648986807808460, guid: 8e383c843eeba6e41a45cbdaf253571f, type: 3}
-  - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
-  - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
-  - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
-  - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
-  - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
+  - {fileID: 6016264987579476753, guid: 871344de34eea1a468170a62227d9eb5, type: 3}
   - {fileID: 1676084900246011227, guid: b8fce8f9d57d08e46b293a338a566bdb, type: 3}
   moneyText: {fileID: 606062903}
   position: {x: 0.2496127, y: 3.568261, z: 0}

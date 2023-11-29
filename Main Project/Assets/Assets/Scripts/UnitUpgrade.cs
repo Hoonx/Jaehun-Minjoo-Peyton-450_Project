@@ -103,7 +103,7 @@ public class UnitUpgrade : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (allowButtonReactivation && selectedUnit == null)
+        if (gameObject.tag == "Tower" && allowButtonReactivation && selectedUnit == null)
         {
             selectedUnit = this; // Set this unit as the selected unit
             upgradeButtonInstance.SetActive(true);
