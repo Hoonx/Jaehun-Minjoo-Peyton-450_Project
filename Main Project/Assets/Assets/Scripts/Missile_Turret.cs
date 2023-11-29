@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
-public class J_Turret : MonoBehaviour
+public class Missile_Turret : MonoBehaviour
 {
-    
     [SerializeField] private float range = 5f;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectile;
@@ -34,7 +32,7 @@ public class J_Turret : MonoBehaviour
 
     private void fire() {
         GameObject projectileObject = Instantiate(projectile, transform.position, Quaternion.identity);
-        J_Projectile projectileScript = projectileObject.GetComponent<J_Projectile>();
+        Missile projectileScript = projectileObject.GetComponent<Missile>();
         projectileScript.DefineTarget(target);
     }
 
