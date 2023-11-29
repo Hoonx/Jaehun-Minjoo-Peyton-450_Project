@@ -30,19 +30,25 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (SplashRange > 0) {
-            var hitColliders = Physics2D.OverlapCircleAll(transform.position, SplashRange);
-            foreach (var hitCollider in hitColliders) {
-                var enemy = hitCollider.GetComponent<EnemyInteraction>();
-                if (enemy) {
-                    var closestPoint = hitCollider.ClosestPoint(transform.position);
-                    var distance = Vector3.Distance(closestPoint, transform.position);
-                    var damagePercent = Mathf.InverseLerp(SplashRange, 0, distance);
-                    enemy.takeDamage(damagePercent * damage);
+        if (coll.gameObject.GetComponent<MouseController>() == false && coll.gameObject.GetComponent<PlatformController>() == false)
+        {
+            if (SplashRange > 0)
+            {
+                var hitColliders = Physics2D.OverlapCircleAll(transform.position, SplashRange);
+                foreach (var hitCollider in hitColliders)
+                {
+                    var enemy = hitCollider.GetComponent<EnemyInteraction>();
+                    if (enemy)
+                    {
+                        var closestPoint = hitCollider.ClosestPoint(transform.position);
+                        var distance = Vector3.Distance(closestPoint, transform.position);
+                        var damagePercent = Mathf.InverseLerp(SplashRange, 0, distance);
+                        enemy.takeDamage(damagePercent * damage);
+                    }
                 }
             }
+            coll.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+            Destroy(gameObject);
         }
-        coll.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
-        Destroy(gameObject);
     }
 }
