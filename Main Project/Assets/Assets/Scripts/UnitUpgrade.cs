@@ -16,6 +16,9 @@ public class UnitUpgrade : MonoBehaviour
     public int upgradeCost =100;
 
     private TMP_Text upgradeMoney;
+    public Vector3 offset;
+
+    //private bool isMouseOver = false;
 
 
     void Start()
@@ -30,6 +33,7 @@ public class UnitUpgrade : MonoBehaviour
         upgradeMoney = upgradeButtonInstance.transform.Find("UpgradeText").GetComponent<TMP_Text>();
 
         upgradeButtonInstance.SetActive(false);
+        selectedUnit = null;
     }
 
 
@@ -40,7 +44,7 @@ public class UnitUpgrade : MonoBehaviour
         {
             if (upgradeButtonInstance.activeSelf)
             {
-                Vector2 screenPosition = selectedUnit.transform.position;
+                Vector3 screenPosition = selectedUnit.transform.position;
                 upgradeButtonInstance.transform.position = screenPosition;
             }
 
@@ -56,6 +60,7 @@ public class UnitUpgrade : MonoBehaviour
         {
             // If selectedUnit is null and the upgrade button is still active, deactivate it
             upgradeButtonInstance.SetActive(false);
+            selectedUnit = null;
         }
 
     }
@@ -66,7 +71,7 @@ public class UnitUpgrade : MonoBehaviour
         upgradeButtonInstance.SetActive(false);
         selectedUnit = null;
         allowButtonReactivation = false;
-        StartCoroutine(AllowButtonReactivationAfterDelay(1f));
+        StartCoroutine(AllowButtonReactivationAfterDelay(2f));
     }
 
     void Upgrade()
@@ -79,7 +84,7 @@ public class UnitUpgrade : MonoBehaviour
             upgradeButtonInstance.SetActive(false);
             selectedUnit = null;
             allowButtonReactivation = false;
-            StartCoroutine(AllowButtonReactivationAfterDelay(1f));
+            StartCoroutine(AllowButtonReactivationAfterDelay(2f));
             upgradeCost += 50;
             BuyButton.instance.UpdateMoneyDisplay();
         } else
@@ -103,8 +108,11 @@ public class UnitUpgrade : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (gameObject.tag == "Tower" && allowButtonReactivation && selectedUnit == null)
+        //isMouseOver = true;
+
+        if (allowButtonReactivation && selectedUnit == null)
         {
+
             selectedUnit = this; // Set this unit as the selected unit
             upgradeButtonInstance.SetActive(true);
         }
@@ -112,15 +120,38 @@ public class UnitUpgrade : MonoBehaviour
     }
 
 
+    //void OnMouseExit()
+    //{
+    //    if (selectedUnit != null)
+    //    {
+    //        isMouseOver = false;
+    //        selectedUnit = null;
+    //        upgradeButtonInstance.SetActive(false);
+    //        StartCoroutine(DeactivateButtonAfterDelay(2f));
+    //    }
+    //}
+    //IEnumerator DeactivateButtonAfterDelay(float delay)
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    if (!isMouseOver) // Only deactivate if the mouse is still not over the GameObject
+    //    {
+    //        if (selectedUnit != null)
+    //        {
+    //            selectedUnit = null;
+    //            upgradeButtonInstance.SetActive(false);
+    //        }
+    //    }
+    //}
 
 
-    public static Vector3 GetSelectedUnitPosition()
-    {
-        if (selectedUnit != null)
-        {
-            return selectedUnit.transform.position;
-        }
 
-        return Vector3.zero;
-    }
+    //public static Vector3 GetSelectedUnitPosition()
+    //{
+    //    if (selectedUnit != null)
+    //    {
+    //        return selectedUnit.transform.position;
+    //    }
+
+    //    return Vector3.zero;
+    //}
 }
