@@ -7,7 +7,7 @@ public class BuyButton : MonoBehaviour
 {
     public static BuyButton instance;
     // Start is called before the first frame update
-    public int money;
+    public int money = 400;
     public GameObject[] unit;
     public Text moneyText;
     //public PlatformController coffin;
@@ -27,6 +27,7 @@ public class BuyButton : MonoBehaviour
 
 
     public void OnButtonPress() {
+        Debug.Log("buy button pressed");
         if (money >= 200) {
             money -= 200;
             UpdateMoneyDisplay();
@@ -35,6 +36,9 @@ public class BuyButton : MonoBehaviour
             GameObject newUnit = Instantiate(unit[randomSpawn]);
             newUnit.transform.position = position;
 
+        } else
+        {
+            Debug.Log("don't have enough money");
         }
 
     }

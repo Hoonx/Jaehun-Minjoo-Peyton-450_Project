@@ -36,19 +36,27 @@ public class UnitUpgrade : MonoBehaviour
     void Update()
     {
         // Update the position of the button if it's active and there's a selected unit
-        if (upgradeButtonInstance.activeSelf && selectedUnit != null)
+        if (selectedUnit != null && upgradeButtonInstance != null)
         {
-            Vector2 screenPosition = selectedUnit.transform.position;
-            upgradeButtonInstance.transform.position = screenPosition;
-        }
+            if (upgradeButtonInstance.activeSelf)
+            {
+                Vector2 screenPosition = selectedUnit.transform.position;
+                upgradeButtonInstance.transform.position = screenPosition;
+            }
 
-        if(TowerTestControl.instance.selected == true)
-        {
-            upgradeButtonInstance.SetActive(false);
-            selectedUnit = null;
+            if (TowerTestControl.instance.selected == true)
+            {
+                upgradeButtonInstance.SetActive(false);
+                selectedUnit = null;
+            }
+
+            upgradeMoney.text = "Upgrade:" + upgradeCost.ToString();
         }
-        
-        upgradeMoney.text = "Upgrade:" + upgradeCost.ToString();
+        else if (upgradeButtonInstance != null && upgradeButtonInstance.activeSelf)
+        {
+            // If selectedUnit is null and the upgrade button is still active, deactivate it
+            upgradeButtonInstance.SetActive(false);
+        }
 
     }
 

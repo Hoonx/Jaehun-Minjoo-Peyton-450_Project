@@ -26,6 +26,7 @@ public class EnemyInteraction : MonoBehaviour
     void Start() {
         health = maxHealth;
         HealthBar.SetHealth(health, maxHealth);
+        
         // healthBarInstance = Instantiate(healthBarPrefab, FindObjectOfType<Canvas>().transform);
         // healthBarInstance.targetTransform = transform;
         // healthBarFill = healthBarInstance.transform.Find("HealthFill").GetComponent<Image>();
