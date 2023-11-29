@@ -102,6 +102,9 @@ public class tower_prototype : MonoBehaviour
 
 
             }
+            else {
+                attackAnim.SetBool("Trigger", false);
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
