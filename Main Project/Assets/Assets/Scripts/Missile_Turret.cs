@@ -11,6 +11,14 @@ public class Missile_Turret : MonoBehaviour
 
     private Transform target;
     private float waitTime;
+    TowerTestControl tower;
+    Animator anim;
+
+    private void Start()
+    {
+        tower = GetComponent<TowerTestControl>();
+        anim = GetComponent<Animator>();
+    }
 
     private void Update() {
         if (target == null) {
@@ -18,19 +26,28 @@ public class Missile_Turret : MonoBehaviour
             return;
         }
 
-        if (!isTargetInRange()) {
+        if (!isTargetInRange() || tower.selected) {
             target = null;
         }
         else {
             waitTime += Time.deltaTime;
-            if (waitTime >= 1f/dps) {
+            if (waitTime >= .5f)
+            {
+                anim.SetBool("Trigger", false);
+            }
+            if (waitTime >= 1f / dps)
+            {
                 fire();
                 waitTime = 0f;
             }
+            
+            
+
         }
     }
 
     private void fire() {
+        anim.SetBool("Trigger", true);
         GameObject projectileObject = Instantiate(projectile, transform.position, Quaternion.identity);
         Missile projectileScript = projectileObject.GetComponent<Missile>();
         projectileScript.DefineTarget(target);

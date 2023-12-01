@@ -12,25 +12,38 @@ public class Sniper_Turret : MonoBehaviour
     private Transform target;
     private float waitTime;
 
+    TowerTestControl tower;
+    Animator anim;
+
+    private void Start()
+    {
+        tower = GetComponent<TowerTestControl>();
+        anim = GetComponent<Animator>();
+    }
+
     private void Update() {
         if (target == null) {
             FindTarget();
             return;
         }
 
-        if (!isTargetInRange()) {
+        if (!isTargetInRange() || tower.selected) {
+            anim.SetBool("Trigger", false);
             target = null;
         }
         else {
             waitTime += Time.deltaTime;
-            if (waitTime >= 1f/dps) {
-                fire();
-                waitTime = 0f;
+            if (waitTime >= .5f)
+            {
+                anim.SetBool("Trigger", false);
             }
+          
+            
         }
     }
 
     private void fire() {
+        anim.SetBool("Trigger", true);
         GameObject projectileObject = Instantiate(projectile, transform.position, Quaternion.identity);
         SniperBullet projectileScript = projectileObject.GetComponent<SniperBullet>();
         projectileScript.DefineTarget(target);

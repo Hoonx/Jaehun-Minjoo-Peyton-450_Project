@@ -20,7 +20,7 @@ public class TowerTestControl : MonoBehaviour
     public Sprite forward;
     public Sprite right;
     public Sprite left;
-    public int facing;
+    public int facing = 1;
     bool mouseTouch;
     public Animator anim;
 

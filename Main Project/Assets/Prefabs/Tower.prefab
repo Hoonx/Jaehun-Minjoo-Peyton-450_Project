@@ -109,7 +109,7 @@ MonoBehaviour:
   forward: {fileID: -1424760521, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
   right: {fileID: 459105713, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
   left: {fileID: 604415489, guid: 6cf76039ac9b5b94fa4668d68eb1e4e5, type: 3}
-  facing: 0
+  facing: 1
   anim: {fileID: 0}
 --- !u!50 &674485989966177080
 Rigidbody2D:
@@ -258,3 +258,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeButtonPrefab: {fileID: 481865081105965941, guid: aecd8b626e34a4730b9176b7d46a5ab6, type: 3}
   upgradeCost: 100
+  offset: {x: 0, y: 0, z: 0}

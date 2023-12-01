@@ -193,7 +193,7 @@ MonoBehaviour:
   forward: {fileID: -710642352, guid: 665d8af5a9462e54baf90c8e695d98a8, type: 3}
   right: {fileID: 1272068374, guid: 665d8af5a9462e54baf90c8e695d98a8, type: 3}
   left: {fileID: 1272068374, guid: 665d8af5a9462e54baf90c8e695d98a8, type: 3}
-  facing: 0
+  facing: 1
   anim: {fileID: 0}
 --- !u!50 &2497205840635865919
 Rigidbody2D:
