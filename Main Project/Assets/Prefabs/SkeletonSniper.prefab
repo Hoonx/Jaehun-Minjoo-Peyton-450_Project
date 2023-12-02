@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b48706b472a4fa58213763440a02fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeButtonPrefab: {fileID: 0}
+  upgradeButtonPrefab: {fileID: 481865081105965941, guid: aecd8b626e34a4730b9176b7d46a5ab6, type: 3}
   upgradeCost: 100
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6701095360254759661

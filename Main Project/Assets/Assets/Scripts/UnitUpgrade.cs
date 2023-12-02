@@ -10,13 +10,14 @@ public class UnitUpgrade : MonoBehaviour
     private GameObject upgradeButtonInstance; // Instance of the button
     private static UnitUpgrade selectedUnit; // Currently selected unit
 
-    private bool allowButtonReactivation = true;
 
     private Button closeButton;
     public int upgradeCost =100;
 
     private TMP_Text upgradeMoney;
     public Vector3 offset;
+
+    private Coroutine hoverCoroutine;
 
     //private bool isMouseOver = false;
 
@@ -70,8 +71,11 @@ public class UnitUpgrade : MonoBehaviour
         Debug.Log("close!");
         upgradeButtonInstance.SetActive(false);
         selectedUnit = null;
-        allowButtonReactivation = false;
-        StartCoroutine(AllowButtonReactivationAfterDelay(2f));
+        if (hoverCoroutine != null)
+        {
+            StopCoroutine(hoverCoroutine);
+            hoverCoroutine = null;
+        }
     }
 
     void Upgrade()
@@ -83,25 +87,21 @@ public class UnitUpgrade : MonoBehaviour
             tower_prototype.instance.damage++;
             upgradeButtonInstance.SetActive(false);
             selectedUnit = null;
-            allowButtonReactivation = false;
-            StartCoroutine(AllowButtonReactivationAfterDelay(2f));
             upgradeCost += 50;
             BuyButton.instance.UpdateMoneyDisplay();
+            if (hoverCoroutine != null)
+            {
+                StopCoroutine(hoverCoroutine);
+                hoverCoroutine = null;
+            }
         } else
         {
             Debug.Log("Upgrade Fail!");
             upgradeButtonInstance.SetActive(false);
             selectedUnit = null;
-            allowButtonReactivation = false;
-            StartCoroutine(AllowButtonReactivationAfterDelay(1f));
+
         }
 
-    }
-
-    IEnumerator AllowButtonReactivationAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        allowButtonReactivation = true;
     }
 
 
@@ -109,14 +109,34 @@ public class UnitUpgrade : MonoBehaviour
     void OnMouseEnter()
     {
         //isMouseOver = true;
+        Debug.Log("Mouse Enter");
 
-        if (allowButtonReactivation && selectedUnit == null)
+        if (selectedUnit == null)
         {
 
             selectedUnit = this; // Set this unit as the selected unit
-            upgradeButtonInstance.SetActive(true);
+            hoverCoroutine = StartCoroutine(ActivateButtonAfterDelay(2f));
         }
 
+    }
+
+    IEnumerator ActivateButtonAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        if (selectedUnit != null && upgradeButtonInstance != null)
+        {
+            upgradeButtonInstance.SetActive(true);
+        }
+    }
+
+    void OnDestroy()
+    {
+        // Stop the coroutine when the GameObject is destroyed
+        if (hoverCoroutine != null)
+        {
+            StopCoroutine(hoverCoroutine);
+        }
     }
 
 
@@ -144,14 +164,4 @@ public class UnitUpgrade : MonoBehaviour
     //}
 
 
-
-    //public static Vector3 GetSelectedUnitPosition()
-    //{
-    //    if (selectedUnit != null)
-    //    {
-    //        return selectedUnit.transform.position;
-    //    }
-
-    //    return Vector3.zero;
-    //}
 }
