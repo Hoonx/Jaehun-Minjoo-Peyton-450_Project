@@ -33,11 +33,11 @@ public class Sniper_Turret : MonoBehaviour
         }
         else {
             waitTime += Time.deltaTime;
-            if (waitTime >= .5f)
+            if (waitTime >= 1f / dps)
             {
-                anim.SetBool("Trigger", false);
+                fire();
+                waitTime = 0f;
             }
-          
             
         }
     }

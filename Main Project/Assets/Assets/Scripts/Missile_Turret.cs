@@ -27,14 +27,12 @@ public class Missile_Turret : MonoBehaviour
         }
 
         if (!isTargetInRange() || tower.selected) {
+            anim.SetBool("Trigger", false);
+            
             target = null;
         }
         else {
             waitTime += Time.deltaTime;
-            if (waitTime >= .5f)
-            {
-                anim.SetBool("Trigger", false);
-            }
             if (waitTime >= 1f / dps)
             {
                 fire();
