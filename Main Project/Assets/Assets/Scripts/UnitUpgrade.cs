@@ -6,10 +6,12 @@ using TMPro;
 
 public class UnitUpgrade : MonoBehaviour
 {
-    public GameObject upgradeButtonPrefab; // Reference to the upgrade button prefab
-    private GameObject upgradeButtonInstance; // Instance of the button
-
+    //public GameObject upgradeButtonPrefab; // Reference to the upgrade button prefab
+    //private GameObject upgradeButtonInstance; // Instance of the button
+    private Button upgradeButton; // Reference to the upgrade button
     private Button closeButton;
+
+    //private Button closeButton;
     public int upgradeCost = 100;
 
     private TMP_Text upgradeMoney;
@@ -19,17 +21,21 @@ public class UnitUpgrade : MonoBehaviour
 
     void Start()
     {
-        upgradeButtonInstance = Instantiate(upgradeButtonPrefab, FindObjectOfType<Canvas>().transform);
+        upgradeButton = GetComponentInChildren<Button>(true);
+        if (upgradeButton != null)
+        {
+            upgradeButton.onClick.AddListener(Upgrade);
+            upgradeMoney = upgradeButton.GetComponentInChildren<TMP_Text>(true);
+            closeButton = upgradeButton.transform.Find("CloseButton").GetComponent<Button>();
+            closeButton.onClick.AddListener(CloseUpgrade);
+        }
+        else
+        {
+            Debug.LogError("Upgrade button not found in children.");
+        }
 
-        Button upgradeButton2 = upgradeButtonInstance.GetComponent<Button>();
-        upgradeButton2.onClick.AddListener(Upgrade);
-
-        closeButton = upgradeButtonInstance.transform.Find("CloseButton").GetComponent<Button>();
-        closeButton.onClick.AddListener(CloseUpgrade);
-
-        upgradeMoney = upgradeButtonInstance.transform.Find("UpgradeText").GetComponent<TMP_Text>();
-
-        //upgradeButtonInstance.SetActive(false);
+        if (upgradeButton != null)
+            upgradeButton.gameObject.SetActive(false); // Initially set the button to inactive
     }
 
     void Update()
@@ -59,13 +65,18 @@ public class UnitUpgrade : MonoBehaviour
                 StopAndResetCoroutine();
             }
         }
-        if (upgradeButtonInstance != null && upgradeButtonInstance.activeSelf)
+        if (upgradeButton != null && upgradeButton.gameObject.activeInHierarchy)
         {
             //Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + offset);
             //upgradeButtonInstance.transform.position = screenPosition;
 
-            Vector3 screenPosition = transform.position;
-            upgradeButtonInstance.transform.position = screenPosition;
+            //Vector3 screenPosition = transform.position;
+            //upgradeButton.transform.position = screenPosition;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + offset);
+            
+            upgradeButton.transform.position = Camera.main.WorldToScreenPoint(transform.position + offset);
+            screenPosition.z = 5;
+
         }
     }
 
@@ -78,9 +89,9 @@ public class UnitUpgrade : MonoBehaviour
             StopCoroutine(hoverCoroutine);
             hoverCoroutine = null;
         }
-        if (upgradeButtonInstance != null)
+        if (upgradeButton != null)
         {
-            upgradeButtonInstance.SetActive(false);
+            upgradeButton.gameObject.SetActive(false);
         }
     }
 
@@ -88,7 +99,7 @@ public class UnitUpgrade : MonoBehaviour
 
     public void CloseUpgrade()
         {
-        upgradeButtonInstance.SetActive(false);
+        upgradeButton.gameObject.SetActive(false);
         if (hoverCoroutine != null)
             {
             StopCoroutine(hoverCoroutine);
@@ -108,7 +119,7 @@ public class UnitUpgrade : MonoBehaviour
             upgradeCost += 50;
             BuyButton.instance.UpdateMoneyDisplay();
         }
-        upgradeButtonInstance.SetActive(false);
+        upgradeButton.gameObject.SetActive(false);
         if (hoverCoroutine != null)
         {
             Debug.Log("upgrade fail");
@@ -130,10 +141,14 @@ public class UnitUpgrade : MonoBehaviour
     IEnumerator ActivateButtonAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        if (upgradeButtonInstance != null)
+        if (upgradeButton != null)
         {
             Debug.Log("Activating upgrade button");
-            upgradeButtonInstance.SetActive(true);
+            upgradeButton.gameObject.SetActive(true);
+            while (true)
+            {
+                yield return null;
+            }
         }
         else
         {
@@ -147,9 +162,9 @@ public class UnitUpgrade : MonoBehaviour
         {
             StopCoroutine(hoverCoroutine);
         }
-        if (upgradeButtonInstance != null)
+        if (upgradeButton != null)
         {
-            Destroy(upgradeButtonInstance);
+            Destroy(upgradeButton);
         }
     }
 }

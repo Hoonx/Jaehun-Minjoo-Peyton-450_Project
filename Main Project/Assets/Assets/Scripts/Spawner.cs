@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
             Spawn();
             enemiesNum--;
             spawnTime = Time.time + timeBetweenEnemiesSpawn;
-        } else if (enemiesNum == 0 && enemiesLeft == 0)
+        } else if (enemiesNum <= 0 && enemiesLeft <= 0)
         {
             nextwaveButton.interactable = true;
             if (waveCoroutine == null) // Check if the coroutine is not running

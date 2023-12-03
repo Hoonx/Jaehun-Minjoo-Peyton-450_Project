@@ -16,6 +16,7 @@ public class MouseController : MonoBehaviour
     public bool holding = false;
     void Start()
     {
+
         Cursor.visible = false;
         currentSprite = GetComponent<SpriteRenderer>();
         holding = false;

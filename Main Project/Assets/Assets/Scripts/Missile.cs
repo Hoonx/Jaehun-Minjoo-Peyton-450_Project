@@ -47,7 +47,11 @@ public class Missile : MonoBehaviour
                     }
                 }
             }
-            coll.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
+            var enemyInteraction = coll.gameObject.GetComponent<EnemyInteraction>();
+            if (enemyInteraction != null)
+            {
+                enemyInteraction.takeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }
