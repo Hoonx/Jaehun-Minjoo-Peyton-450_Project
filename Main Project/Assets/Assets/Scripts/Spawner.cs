@@ -117,6 +117,7 @@ public class Spawner : MonoBehaviour
             StopCoroutine(waveCoroutine);
             waveCoroutine = null;
         }
+        nextwaveButton.interactable = true;
     }
 
     public void RestartWaveCoroutine()

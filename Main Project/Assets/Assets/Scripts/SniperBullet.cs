@@ -27,16 +27,23 @@ public class SniperBullet : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (!hasHit)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        EnemyInteraction enemy = collision.gameObject.GetComponent<EnemyInteraction>();
+        if (enemy != null)
         {
-            collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
-            damage /= 1.5f;
-            hasHit = true;
+            if (!hasHit)
+            {
+                enemy.takeDamage(damage);
+                damage /= 1.5f;
+                hasHit = true;
+            }
+            else
+            {
+                enemy.takeDamage(damage);
+            }
         }
-        else {
-            collision.gameObject.GetComponent<EnemyInteraction>().takeDamage(damage);
-        }
+
         if (collision.gameObject.layer == 13)
         {
             Debug.Log("Collided with Boundary");

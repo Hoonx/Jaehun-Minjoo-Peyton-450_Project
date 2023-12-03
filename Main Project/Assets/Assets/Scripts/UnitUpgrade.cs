@@ -19,7 +19,7 @@ public class UnitUpgrade : MonoBehaviour
 
     void Start()
     {
-        upgradeButtonInstance = Instantiate(upgradeButtonPrefab, FindObjectOfType<Canvas>().transform);
+        //upgradeButtonInstance = Instantiate(upgradeButtonPrefab, FindObjectOfType<Canvas>().transform);
 
         Button upgradeButton2 = upgradeButtonInstance.GetComponent<Button>();
         upgradeButton2.onClick.AddListener(Upgrade);
@@ -29,7 +29,7 @@ public class UnitUpgrade : MonoBehaviour
 
         upgradeMoney = upgradeButtonInstance.transform.Find("UpgradeText").GetComponent<TMP_Text>();
 
-        upgradeButtonInstance.SetActive(false);
+        //upgradeButtonInstance.SetActive(false);
     }
 
     void Update()
@@ -76,6 +76,9 @@ public class UnitUpgrade : MonoBehaviour
         {
             StopCoroutine(hoverCoroutine);
             hoverCoroutine = null;
+        }
+        if (upgradeButtonInstance != null)
+        {
             upgradeButtonInstance.SetActive(false);
         }
     }
@@ -125,12 +128,8 @@ public class UnitUpgrade : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (upgradeButtonInstance != null)
         {
-            Debug.Log("Activating upgrade button"); // Additional debugging
+            Debug.Log("Activating upgrade button");
             upgradeButtonInstance.SetActive(true);
-
-            // Additional debugging for position and visibility
-            Debug.Log("Button position: " + upgradeButtonInstance.transform.position);
-            Debug.Log("Button active status: " + upgradeButtonInstance.activeSelf);
         }
         else
         {
@@ -138,14 +137,12 @@ public class UnitUpgrade : MonoBehaviour
         }
     }
 
-
     void OnDestroy()
     {
         if (hoverCoroutine != null)
         {
             StopCoroutine(hoverCoroutine);
         }
-
         if (upgradeButtonInstance != null)
         {
             Destroy(upgradeButtonInstance);
