@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MouseController : MonoBehaviour
 {
@@ -12,7 +14,8 @@ public class MouseController : MonoBehaviour
     public Sprite staticSprite;
     public Sprite holdSprite;
     public Sprite grabSprite;
-    
+
+
     public bool holding = false;
     void Start()
     {
@@ -20,9 +23,10 @@ public class MouseController : MonoBehaviour
         Cursor.visible = false;
         currentSprite = GetComponent<SpriteRenderer>();
         holding = false;
-        
-        
-        
+
+
+
+
 
     }
     // Update is called once per frame
@@ -46,15 +50,26 @@ public class MouseController : MonoBehaviour
 
     void Update()
     {
-      
+ 
         Vector3 mousePosition = Input.mousePosition;
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePositionInWorld.z = 0;
         mousePositionInWorld.x += .06f;
         mousePositionInWorld.y -= .06f;
         transform.position = mousePositionInWorld;
-       
-        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            else
+            {
+
+            }
+        }
+
     }
-    
+
 }

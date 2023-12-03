@@ -5144,6 +5144,7 @@ MonoBehaviour:
   - {fileID: 6210134935434965732, guid: d9e2bfe3993364950b20fba868c46e4a, type: 3}
   - {fileID: 6210134935434965732, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   - {fileID: 6210134935434965732, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
+  - {fileID: 6210134935434965732, guid: d29aa93bca74c45da816e43faabc7b36, type: 3}
   wave: 0
   timeBetweenEnemiesSpawn: 0.5
   enemiesLeft: 0

@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         enemyMov.moveSpeed = 1;
-        enemyHel.health = 10;
+        //enemyHel.health = 10;
         waveCoroutine = StartCoroutine("StartWaves");
         score = PlayerPrefs.GetInt("Score");
     }

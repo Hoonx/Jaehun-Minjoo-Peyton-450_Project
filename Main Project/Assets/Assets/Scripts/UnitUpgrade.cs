@@ -145,10 +145,7 @@ public class UnitUpgrade : MonoBehaviour
         {
             Debug.Log("Activating upgrade button");
             upgradeButton.gameObject.SetActive(true);
-            while (true)
-            {
-                yield return null;
-            }
+
         }
         else
         {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TowerTestControl : MonoBehaviour
 {
@@ -90,6 +91,10 @@ public class TowerTestControl : MonoBehaviour
         if (!selected) {
 
             if (Input.GetMouseButtonDown(0) && mouseTouch && mouse.holding == false){
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
                 sprite.color = new Color(1, 0, 0, .75f);
                 sprite.sprite = forward;
                 selected = true;
