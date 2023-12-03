@@ -104,8 +104,8 @@ public class Spawner : MonoBehaviour
         newWave.UpdateWaveDisplay();
 
         spawnTime = Time.time+timeBetweenEnemiesSpawn;
-        enemyHel.health *= 1.5f;
-        enemyMov.moveSpeed += .3f;
+        enemyHel.health *= 2f;
+        enemyMov.moveSpeed += .5f;
 
     }
 
