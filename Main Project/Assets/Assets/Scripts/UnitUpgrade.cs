@@ -45,6 +45,7 @@ public class UnitUpgrade : MonoBehaviour
 
         if (hit.collider != null && hit.collider.gameObject == gameObject)
         {
+            upgradeMoney.text = "Upgrade:" + upgradeCost.ToString();
             Debug.Log("Hovering over this tower's Collider");
             if (hoverCoroutine == null)
             {
@@ -98,8 +99,10 @@ public class UnitUpgrade : MonoBehaviour
 
         void Upgrade()
     {
+        
         if (BuyButton.instance.money >= upgradeCost)
         {
+            Debug.Log("up");
             BuyButton.instance.money -= upgradeCost;
             tower_prototype.instance.damage++;
             upgradeCost += 50;
@@ -108,6 +111,7 @@ public class UnitUpgrade : MonoBehaviour
         upgradeButtonInstance.SetActive(false);
         if (hoverCoroutine != null)
         {
+            Debug.Log("upgrade fail");
             StopCoroutine(hoverCoroutine);
             hoverCoroutine = null;
         }
