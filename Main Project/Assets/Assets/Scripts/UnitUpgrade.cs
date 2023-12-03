@@ -19,7 +19,7 @@ public class UnitUpgrade : MonoBehaviour
 
     void Start()
     {
-        //upgradeButtonInstance = Instantiate(upgradeButtonPrefab, FindObjectOfType<Canvas>().transform);
+        upgradeButtonInstance = Instantiate(upgradeButtonPrefab, FindObjectOfType<Canvas>().transform);
 
         Button upgradeButton2 = upgradeButtonInstance.GetComponent<Button>();
         upgradeButton2.onClick.AddListener(Upgrade);
