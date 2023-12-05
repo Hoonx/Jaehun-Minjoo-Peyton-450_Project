@@ -23,6 +23,7 @@ public class EnemyInteraction : MonoBehaviour
     // private HealthBar healthBarInstance;
     // private Image healthBarFill;
 
+
     void Start() {
         health = maxHealth;
         HealthBar.SetHealth(health, maxHealth);

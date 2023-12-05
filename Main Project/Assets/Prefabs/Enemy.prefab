@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 1841697504912084516}
-  moveSpeed: 1.3
+  moveSpeed: 2.5
   spawner: {fileID: 0}
   anim: {fileID: 835911296515305322}
 --- !u!212 &9191207471150022604
@@ -575,7 +575,7 @@ MonoBehaviour:
   enemiesKilled: 0
   buy: {fileID: 0}
   timer: 0
-  health: 12.5
+  health: 15
   maxHealth: 15
   HealthBar: {fileID: 7270850175021194628}
 --- !u!95 &835911296515305322

@@ -575,8 +575,8 @@ MonoBehaviour:
   enemiesKilled: 0
   buy: {fileID: 0}
   timer: 0
-  health: 50
-  maxHealth: 45
+  health: 60
+  maxHealth: 60
   HealthBar: {fileID: 7270850175021194628}
 --- !u!95 &835911296515305322
 Animator:

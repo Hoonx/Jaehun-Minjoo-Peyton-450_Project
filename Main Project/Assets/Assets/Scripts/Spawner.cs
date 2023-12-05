@@ -33,7 +33,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         enemyMov.moveSpeed = 1;
-        //enemyHel.health = 10;
+        enemyHel.health = 15;
+        enemyHel.maxHealth =15;
         waveCoroutine = StartCoroutine("StartWaves");
         score = PlayerPrefs.GetInt("Score");
     }
@@ -104,7 +105,8 @@ public class Spawner : MonoBehaviour
         newWave.UpdateWaveDisplay();
 
         spawnTime = Time.time+timeBetweenEnemiesSpawn;
-        enemyHel.maxHealth *= 1.2f;
+        enemyHel.maxHealth *= 1.5f;
+        enemyHel.health *= 1.5f;
         enemyMov.moveSpeed += .5f;
 
     }
